@@ -1,0 +1,17 @@
+$TTL	604800
+$ORIGIN	alexCompany.pt.
+@	IN	SOA	ns1.alexCompany.pt.	adm.alexCompany.pt.	(
+                2	;	Serial
+                604800  ;	Refresh
+                86400   ;	Retry
+                2419200 ;	Expire
+                604800) ;	Negative Cache TTL
+	IN	NS	ns1.alexCompany.pt.
+ns1	IN	A	198.103.123.13
+@	IN	A	198.103.123.13
+www	IN	A	198.103.123.13
+design	IN	A	198.103.123.13
+marketing	IN	A	198.103.123.13
+admin	IN      A       198.103.123.13
+dmz	IN      A       198.103.123.13
+datacenter	IN      A       198.103.123.13

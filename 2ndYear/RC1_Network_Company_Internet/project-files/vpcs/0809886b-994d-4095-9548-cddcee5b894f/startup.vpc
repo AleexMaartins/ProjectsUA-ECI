@@ -1,0 +1,3 @@
+set pcname AdminPriv
+ip 172.27.3.2 172.27.3.3 24
+ip 2abc:5753:0:3:2050:79ff:fe66:6802/64

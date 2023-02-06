@@ -1,0 +1,13 @@
+/
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bindzones.rfc1918";
+
+	zone "alexCompany.pt" in{
+		type master; //define the zone as master
+		file "/etc/bind/db.alexCompany.pt"; //file with the domain records
+	};
+

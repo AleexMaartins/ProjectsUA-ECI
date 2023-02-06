@@ -1,0 +1,62 @@
+Nov 28 18:19:09.686 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Nov 28 18:19:09.688 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 57044.
+Nov 28 18:19:10.191 HYPERVISOR: exec_cmd: hypervisor version 
+Nov 28 18:19:10.192 HYPERVISOR: exec_cmd: hypervisor working_dir C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips 
+Nov 28 18:19:10.192 GENERAL: working_dir=C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips
+Nov 28 18:19:10.192 HYPERVISOR: exec_cmd: hypervisor working_dir C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips\ef9f5adf-5d4f-459e-8c83-0c2f2f905267 
+Nov 28 18:19:10.192 GENERAL: working_dir=C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips\ef9f5adf-5d4f-459e-8c83-0c2f2f905267
+Nov 28 18:19:10.194 HYPERVISOR: exec_cmd: vm create ISP 3 c7200 
+Nov 28 18:19:10.196 VM: VM ISP created.
+Nov 28 18:19:10.197 HYPERVISOR: exec_cmd: vm set_con_tcp_port ISP 7002 
+Nov 28 18:19:10.197 HYPERVISOR: exec_cmd: c7200 get_mac_addr ISP 
+Nov 28 18:19:10.197 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:10.198 HYPERVISOR: exec_cmd: vm slot_add_binding ISP 0 0 C7200-IO-FE 
+Nov 28 18:19:10.198 HYPERVISOR: exec_cmd: vm set_disk0 ISP 0 
+Nov 28 18:19:10.199 HYPERVISOR: exec_cmd: vm set_exec_area ISP 64 
+Nov 28 18:19:10.200 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:10.200 HYPERVISOR: exec_cmd: vm set_idle_pc ISP 0x601712a8 
+Nov 28 18:19:10.201 HYPERVISOR: exec_cmd: vm set_ios ISP C:/Users/Alex/GNS3/images/IOS/c7200-adventerprisek9-mz.151-4.M2.image 
+Nov 28 18:19:10.202 HYPERVISOR: exec_cmd: c7200 set_mac_addr ISP ca03.0fcc.0000 
+Nov 28 18:19:10.203 HYPERVISOR: exec_cmd: vm set_nvram ISP 512 
+Nov 28 18:19:10.204 HYPERVISOR: exec_cmd: vm set_ram ISP 512 
+Nov 28 18:19:10.205 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:10.206 HYPERVISOR: exec_cmd: vm slot_remove_binding ISP 0 0 
+Nov 28 18:19:10.207 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:10.208 HYPERVISOR: exec_cmd: vm slot_add_binding ISP 0 0 C7200-IO-2FE 
+Nov 28 18:19:10.208 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:10.209 HYPERVISOR: exec_cmd: vm slot_add_binding ISP 1 0 PA-2FE-TX 
+Nov 28 18:19:13.663 HYPERVISOR: exec_cmd: nio create_udp udp-fa1e858b-b612-4eac-b07d-b49e5ecca084 10004 127.0.0.1 10005 
+Nov 28 18:19:13.949 HYPERVISOR: exec_cmd: vm slot_add_nio_binding ISP 0 0 udp-fa1e858b-b612-4eac-b07d-b49e5ecca084 
+Nov 28 18:19:13.949 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:17.286 HYPERVISOR: exec_cmd: nio create_udp udp-4371e25e-a4da-4ab1-a28d-c2e4ede398ef 10054 127.0.0.1 10055 
+Nov 28 18:19:17.294 HYPERVISOR: exec_cmd: vm slot_add_nio_binding ISP 0 1 udp-4371e25e-a4da-4ab1-a28d-c2e4ede398ef 
+Nov 28 18:19:17.296 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:33.459 HYPERVISOR: exec_cmd: vm create Ghost 0 c7200 
+Nov 28 18:19:33.461 VM: VM Ghost created.
+Nov 28 18:19:33.462 HYPERVISOR: exec_cmd: vm set_ios Ghost C:/Users/Alex/GNS3/images/IOS/c7200-adventerprisek9-mz.151-4.M2.image 
+Nov 28 18:19:33.463 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+Nov 28 18:19:33.464 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips\c7200-adventerprisek9-mz.151-4.M2.image-512.ghost 
+Nov 28 18:19:33.464 HYPERVISOR: exec_cmd: vm set_ram Ghost 512 
+Nov 28 18:19:33.465 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Nov 28 18:19:33.468 HYPERVISOR: exec_cmd: vm set_config Ghost configs\i0_startup-config.cfg 
+Nov 28 18:19:33.469 HYPERVISOR: exec_cmd: vm start Ghost 
+Nov 28 18:19:33.974 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Nov 28 18:19:33.978 HYPERVISOR: exec_cmd: vm stop Ghost 
+Nov 28 18:19:34.211 VM: VM Ghost shutdown.
+Nov 28 18:19:34.212 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+Nov 28 18:19:34.214 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+Nov 28 18:19:34.214 VM: VM Ghost destroyed.
+Nov 28 18:19:34.220 HYPERVISOR: exec_cmd: vm set_ghost_status ISP 2 
+Nov 28 18:19:34.221 HYPERVISOR: exec_cmd: vm set_ghost_file ISP C:\UniversidadeProgramas\RC1\Projeto\project-files\dynamips\c7200-adventerprisek9-mz.151-4.M2.image-512.ghost 
+Nov 28 18:19:34.222 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 18:19:34.225 HYPERVISOR: exec_cmd: vm set_config ISP configs\i3_startup-config.cfg configs\i3_private-config.cfg 
+Nov 28 18:19:34.226 HYPERVISOR: exec_cmd: vm start ISP 
+Nov 28 18:20:04.674 HYPERVISOR: exec_cmd: vm extract_config ISP 
+Nov 28 18:20:34.677 HYPERVISOR: exec_cmd: vm extract_config ISP 
+Nov 28 19:48:49.976 HYPERVISOR: exec_cmd: vm get_status ISP 
+Nov 28 19:48:49.976 HYPERVISOR: exec_cmd: vm stop ISP 
+Nov 28 19:48:50.136 VM: VM ISP shutdown.
+Nov 28 19:48:50.137 HYPERVISOR: exec_cmd: vm extract_config ISP 
+Nov 28 19:48:51.066 HYPERVISOR: Stopped.
+Nov 28 19:48:51.066 VM: VM ISP destroyed.
+Nov 28 19:48:51.067 GENERAL: reset done.

@@ -1,0 +1,12 @@
+$TTL	604800
+$ORIGIN alexGoogle.pt.
+@	IN	SOA	ns1.alexGoogle.pt.	adm.alexGoogle.pt. (
+			2 ; Serial
+			604800 ; Refresh
+			86400 ; Retry
+			2419200 ; Expire
+			604800) ; Negative Cache TTL
+	IN	NS	ns1.alexGoogle.pt.
+ns1	IN	A	120.100.20.16
+@	IN	A	120.100.20.16
+www	IN	A	120.100.20.16
