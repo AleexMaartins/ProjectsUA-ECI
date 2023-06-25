@@ -1,4 +1,4 @@
-![image](https://github.com/AleexMaartins/ProjectsUA-ECI/assets/75785342/3b62e3e8-0280-40a0-8f73-ed3e9a095e1d)# ProjetoAS-TriPlanner
+# ProjetoAS-TriPlanner
 ----------------------------
 * Alexandre Martins (103552)<p>
   * Pagina Principal:<p>
