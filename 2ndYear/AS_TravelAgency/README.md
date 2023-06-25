@@ -1,13 +1,48 @@
-# Responsive Travel Website 🌊
-## [Watch it on youtube](https://youtu.be/YzRDHxbw1RU)
-###  Responsive Travel Website 🌊
-
-- Travel website to the most beautiful beaches, using HTML, CSS & JAVASCRIPT.
-- Contains animations when scrolling.
-- Includes a dark and light mode.
-- Developed first with the Mobile First methodology, then for desktop.
-- Compatible with all mobile devices and with a beautiful and pleasant user interface.
-
-Join the channel to see more videos like this. [Bedimcode](https://www.youtube.com/c/Bedimcode)
-
-![travel-website](/preview.png)
+# ProjetoAS-TriPlanner
+----------------------------
+* Alexandre Martins (103552)<p>
+  * Pagina Principal:<p>
+    * -index.html <p>
+    * -styles.css<p>
+    * -main.js<p>
+  * ChatBot:<p>
+    * -chat.css<p>
+    * -chat.js<p>
+    * -responses.js<p>
+----------------------------
+* Bruno Gomes (103320)<p>
+  * Reserva:<p>
+    * -reserva.html<p>
+    * -reserva.css<p>
+    * -reserva.js<p>
+  * Dados:<p>
+    * -dados.html<p>
+    * -dados.css<p>
+    * -dados.js<p>
+----------------------------
+* Patrícia Cardoso (103243)<p>
+  * Login/SignUp:<p>
+    * -login.html<p>
+    * -login.css<p>
+  * Voo:<p>
+    * -voo.html<p>
+    * -voo.css<p>
+----------------------------   
+* Henrique Coelho (108342)<p>
+  * Hotel:<p>
+    * -hotel.html<p>
+    * -hotel.css<p>
+    * -hotel.js<p>
+    * -rangeslider.js<p>
+    * -rangeslider.css<p>
+---------------------------- 
+* Gonçalo Oliveira (108405)<p>
+  * Perfil:<p>
+    * -profile.html<p>
+    * -styles_profile.css<p>
+    * -profile.js<p>
+  * Confirmação:<p>
+    * -confirmation.html<p>
+    * -confirmation.css<p>
+----------------------------  
+(alguns membros fizeram alterações do codigo dos outros conforme foi preciso (devido a dúvidas / pequenas correções)
