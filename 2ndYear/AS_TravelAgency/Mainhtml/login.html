@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+    <title>TriPlanner</title>
+    <style>
+        .full-page {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        }
+
+        .full-page::before {
+            content: "";
+            background-image: url("assets/img/home1.jpg");
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.8;
+            z-index: -1;
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <div class="full-page">
+        <div id='login-form' class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
+                    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
+                </div>
+                <form id='register' class='input-group-register' onsubmit="registerUser(event)">
+                    <input type='text' class='input-field' placeholder='Nome' required>
+                    <input type='text' class='input-field' placeholder='Idade' required>
+                    <input type='text' class='input-field' placeholder='Telemóvel' required>                   
+                    <input type='email' class='input-field' placeholder='Email' required>
+                    <input type='password' class='input-field' placeholder='Password' required>
+                    <input type='password' class='input-field' placeholder='Confirmar Password' required>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+                <form id='login' class='input-group-login' onsubmit="authenticateUser(event)">
+                    <input type='text' class='input-field' placeholder='Email' required>
+                    <input type='password' class='input-field' placeholder='Password' required>
+                    <button type='submit' class='submit-btn'>Log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+        
+        function register() {
+            x.style.left = '450px';
+            y.style.left = '50px';
+            z.style.left = '110px';
+        }
+        
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '0px';
+        }
+
+        function registerUser(event) {
+            event.preventDefault(); 
+
+            var firstName = document.getElementById('register').querySelector('[placeholder="Nome"]').value;
+            var lastName = document.getElementById('register').querySelector('[placeholder="Idade"]').value;
+            var lastName = document.getElementById('register').querySelector('[placeholder="Telemóvel"]').value;
+            var email = document.getElementById('register').querySelector('[placeholder="Email"]').value;
+            var password = document.getElementById('register').querySelector('[placeholder="Password"]').value;
+            var confirmPassword = document.getElementById('register').querySelector('[placeholder="Confirmar Password"]').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+            login();
+        }
+
+        function authenticateUser(event) {
+            event.preventDefault(); 
+
+            var email = document.getElementById('login').querySelector('[placeholder="Email"]').value;
+            var password = document.getElementById('login').querySelector('[placeholder="Password"]').value;
+
+            window.location.href = "index.html";
+        }
+    </script>
+    <script>
+       window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html> 
+
