@@ -46,6 +46,6 @@
     * -confirmation.css<p>
 ----------------------------  
 * Notas:
- * Alguns membros fizeram alterações do codigo dos outros conforme foi preciso (devido a dúvidas / pequenas correções.
- * Quem teve menos contribuições no site compensou no relatório, sendo o trabalho dividido de igual forma por todos.
+    * Alguns membros fizeram alterações do codigo dos outros conforme foi preciso (devido a dúvidas / pequenas correções.
+    * Quem teve menos contribuições no site compensou no relatório, sendo o trabalho dividido de igual forma por todos.
 ![Contributions](https://github.com/AleexMaartins/ProjectsUA-ECI/assets/75785342/96159fd7-803e-448b-a277-db899b8b8f37)
