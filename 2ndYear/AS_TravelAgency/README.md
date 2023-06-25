@@ -1,4 +1,4 @@
-# ProjetoAS-TriPlanner
+![image](https://github.com/AleexMaartins/ProjectsUA-ECI/assets/75785342/3b62e3e8-0280-40a0-8f73-ed3e9a095e1d)# ProjetoAS-TriPlanner
 ----------------------------
 * Alexandre Martins (103552)<p>
   * Pagina Principal:<p>
@@ -46,3 +46,4 @@
     * -confirmation.css<p>
 ----------------------------  
 (alguns membros fizeram alterações do codigo dos outros conforme foi preciso (devido a dúvidas / pequenas correções)
+![Contributions](https://github.com/AleexMaartins/ProjectsUA-ECI/assets/75785342/96159fd7-803e-448b-a277-db899b8b8f37)
