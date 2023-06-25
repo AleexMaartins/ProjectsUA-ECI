@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/reserva.css">
+
+    <!--=============== ChatBot ===============-->
+    <link rel="stylesheet" href="ChatBot/static/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>TriPlanner</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <a href="index.html" class="nav__logo">TriPlanner</a>
+
+                    <li class="nav__item">
+                        <a href="reserva2.html" class="nav__link active-link">A sua reserva</a><!--     -->
+                    </li>
+                    <li class="nav__item">
+                        <a href="dados2.html" class="nav__link">Os seus dados</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="Confirmation2.html" class="nav__link">Confirmação</a><!--     -->
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="profile2.html" class="nav__logo2">Perfil</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="login.html" class="nav__logo2">Logout</a>
+                    </li>
+
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <div id="popupContainer">
+            <div id="popupContent">
+                <button id="closePopup"><span>x</span></button>
+                <h2 class="move_text2">Vai precisar de automóvel?</h2>
+                <p class="move_text">clique <strong><a class="guerin-link" href="https://www.guerin.pt/pt/"
+                            target="_blank" rel="noopener noreferrer" style="color:rgb(0, 38, 255)">aqui</a></strong>
+                    para alugar.</p>
+                <p class="move_text"><strong>-Parceria com Guerin™</strong></p>
+            </div>
+        </div>
+
+
+        <!--==================== RESERVA ====================-->
+        <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h1 class="reserva_header" align="center">A sua reserva</h1>
+
+                    <div class="rectangle">
+                        <h1 class="voo_header">Voo Porto-Hawaii-Porto</h1>
+                        <div class="thin_rectangle1">
+                            <div class="word-spacing">
+                                <span class="word1">Data</span>
+                                <span class="word2">Aeroporto</span>
+                                <span class="word3">Companhia aérea</span>
+                                <span class="word4">Nº de voo</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="thin_rectangle2">
+                            <p class="sub_description">Viagem de Porto para Hawaii - segunda-feira 1 de Maio - Duração
+                                12:00:00</p>
+                        </div>
+
+                        <h2 class="ida_header">Ida</h2>
+
+                        <div class="word-spacing2">
+                            <span class="word1">Partida <br>10:00<br>01/05/2023</span>
+                            <span class="word2">Aeroporto <br> Sá Carneiro </span>
+                            <span class="word3">TAP <br> &nbsp</span>
+                            <span class="word4">LX1007 <br> &nbsp </span>
+
+                        </div>
+
+                        <div class="word-spacing3">
+                            <span class="word1">Chegada <br>22:00<br>01/05/2023</span>
+                            <span class="word2">Aeroporto<br> Internacional Honolulu </span>
+                            <span class="word3">TAP <br> &nbsp</span>
+                            <span class="word4">LX1008 <br> &nbsp </span>
+
+                        </div>
+
+                        <div class="thin_rectangle3">
+                            <p class="sub_description">Viagem de Hawaii para Porto - quarta-feira 31 de Maio - Duração
+                                12:00:00</p>
+                        </div>
+
+                        <h2 class="volta_header">Volta</h2>
+
+                        <div class="word-spacing4">
+                            <span class="word1">Partida <br>10:00<br>31/05/2023</span>
+                            <span class="word2">Aeroporto<br> Internacional Honolulu </span>
+                            <span class="word3">TAP <br> &nbsp</span>
+                            <span class="word4">LX1009 <br> &nbsp </span>
+                        </div>
+
+                        <div class="word-spacing5">
+                            <span class="word1">Chegada <br>22:00<br>31/05/2023</span>
+                            <span class="word2">Aeroporto <br> Sá Carneiro </span>
+                            <span class="word3">TAP <br> &nbsp</span>
+                            <span class="word4">LX1010 <br> &nbsp </span>
+                        </div>
+
+
+                        <hr class="separation_bar">
+                        <h1 class="voo_header">Hotel reservado - Ka'anapali Beach Hotel</h1>
+
+                        <div class="thin_rectangle4">
+                            <div class="word-spacing6">
+                                <span class="word1">Preço</span>
+                                <span class="word2">Nº de pessoas</span>
+                                <span class="word3">Nº de quartos</span>
+                                <span class="word4">Nº de noites</span>
+                            </div>
+                        </div>
+
+                        <div class="word-spacing7">
+                            <span class="word1">1424€</span>
+                            <span class="word2">6 pessoas</span>
+                            <span class="word3">3 quartos</span>
+                            <span class="word4">10 noites</span>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CAR ====================-->
+        <section class="car-section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">Código para automóvel<br> (opcional)</h2>
+                    <p class="subscribe__description"> Introduza aqui o código obtido através da <a class="guerin-link"
+                            href="https://www.guerin.pt/pt/" target="_blank" rel="noopener noreferrer"
+                            style="color:aqua">Guerin™</a>, para validar o processo de aluguer do automóvel.
+                    </p>
+
+                    <form action="" class="subscribe__form">
+                        <input type="text" placeholder="Introduza o código" class="subscribe__input">
+
+                        <button class="button">
+                            Validar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SPONSORS ====================-->
+        <section class="sponsor section">
+            <div class="sponsor__container container grid">
+                <div class="sponsor__content">
+                    <img src="assets/img/sponsor1.png" style="margin-top: -10px;width: 100px;" alt=""
+                        class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="assets/img/sponsor2.png" style="width: 125px;" alt="" class="sponsor__img">
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Travel</h3>
+                    <p class="footer__description">Travel you choose the <br> destination,
+                        we offer you the <br> experience.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Features</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">New & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Company</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Team</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Plan y Pricing</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Become a member</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Support</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">FAQs</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Support Center</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&#169; All rigths reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">ChatBot!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== Reserva JS ===============-->
+    <script src="assets/js/reserva.js"></script>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="ChatBot/static/scripts/responses.js"></script>
+<script src="ChatBot/static/scripts/chat.js"></script>
+
+</html>

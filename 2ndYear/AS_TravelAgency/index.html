@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!--=============== ChatBot ===============-->
+    <link rel="stylesheet" href="ChatBot/static/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--=============== voo/hotel ===============-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <title>TriPlanner</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <a href="#" class="nav__logo">TriPlanner</a>
+
+                    <li class="nav__item">
+                        <a href="#voo/hotel" class="nav__link active-link">Voo/Hotel</a><!--     -->
+                    </li>
+                    <li class="nav__item">
+                        <a href="#recomendacoes" class="nav__link">Recomendações Para Ti</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#top5destinos" class="nav__link">Top5Destinos (Populares)</a><!--     -->
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="profile.html" class="nav__logo2">Perfil</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="login.html" class="nav__logo2">Logout</a>
+                    </li>
+
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+            <img src="assets/img/home1.jpg" alt="" class="home__img">
+
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__data-title">Vamos Explorar <br> o<b> Mundo Juntos <br> </b></h1>
+                    <a href="#" class="button"> Nova Atualização! Experimenta agora o nosso ChatBot! </a>
+
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                        <i class="ri-facebook-box-fill"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!--==================== voo/hotel ====================-->
+        <section class="voohotel" id="voo/hotel">
+            <h2 class="section__title">Voo/Hotel</h2>
+            <p class="video__description">Aqui podes escolher se queres marcar apenas Voos, apenas Hotel ou ambos!</p>
+            <div id="headervoohotel">
+                <nav>
+                    <li><a href="#voo/hotel" onclick="showSection('voo')">Voo</a></li>
+                    <li><a href="#voo/hotel" onclick="showSection('hotel')">Hotel</a></li>
+                    <li><a href="#voo/hotel" onclick="showSection('voohotel')">Voo + Hotel</a></li>
+                </nav>
+
+                <div id="content2">
+
+                    <!-- --------------------------------------- VOO --------------------------------------- -->
+                    <section id="section-voo" class="hidden">
+                        <h2>Voo</h2>
+                        <form>
+                            <label for="origem">Origem:</label>
+                            <input type="text" id="origem" name="origem" placeholder="Porto"><br>
+
+                            <label for="origem">Destino:</label>
+                            <input type="text" id="destino" name="destino" placeholder="Amsterdão"><br>
+
+                            <label for="partida">Partida:</label>
+                            <div class="dropdown">
+                                <input type="date" id="partida" name="partida" placeholder="dd/mm/aaaa">
+                            </div>
+
+
+
+                            <label for="destino">Chegada:</label>
+                            <div class="dropdown">
+                                <input type="date" id="partida" name="partida" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="origem">Quantidade (Crianças-Adultos-Idosos):</label>
+                            <input type="text" id="quantidadepessoas" name="quantidadepessoas" placeholder="2-2-1"><br>
+
+                            <label for="tipo-viagem">Tipo de Viagem:</label>
+                            <select id="tipo-viagem" name="tipo-viagem">
+                                <option value="ida">Apenas Ida</option>
+                                <option value="ida-volta">Ida e Volta</option>
+                            </select>
+
+                            <label for="origem">Qualidade de Viagem:</label>
+                            <select id="qualquer" name="qualquer">
+                                <option value="ida">Económica</option>
+                                <option value="ida-volta">Executiva</option>
+                                <option value="ida-volta">Primeira Classe</option>
+                            </select>
+                            <input type="submit" value="Confirmar"
+                                onclick="window.location.href = 'voo.html'; return false;">
+                        </form>
+                    </section>
+                    <!-- --------------------------------------- HOTEL --------------------------------------- -->
+                    <section id="section-hotel" class="hidden">
+                        <h2>Hotel</h2>
+                        <form>
+                            <label for="origem">Localização:</label>
+                            <input type="text" id="origem" name="origem" placeholder="Amsterdão"><br>
+
+                            <label for="partida">Check In:</label>
+                            <div class="dropdown">
+                                <input type="date" id="checkin" name="checkin" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="destino">Check Out:</label>
+                            <div class="dropdown">
+                                <input type="date" id="checkout" name="checkout" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="origem">Quantidade(Crianças-Adultos-Idosos):</label>
+                            <input type="text" id="quantidadepessoas" name="quantidadepessoas" placeholder="2-2-1"><br>
+
+                            <label for="categoria">Categoria:</label>
+                            <div class="rating">
+                                <input type="radio" id="star5" name="categoria" value="5">
+                                <label for="star5" title="5 estrelas">&#9733;</label>
+                                <input type="radio" id="star4" name="categoria" value="4">
+                                <label for="star4" title="4 estrelas">&#9733;</label>
+                                <input type="radio" id="star3" name="categoria" value="3">
+                                <label for="star3" title="3 estrelas">&#9733;</label>
+                                <input type="radio" id="star2" name="categoria" value="2">
+                                <label for="star2" title="2 estrelas">&#9733;</label>
+                                <input type="radio" id="star1" name="categoria" value="1">
+                                <label for="star1" title="1 estrela">&#9733;</label>
+                            </div>
+
+
+                            <input type="submit" value="Confirmar"
+                                onclick="window.location.href = 'hotel.html'; return false;">
+                        </form>
+                    </section>
+
+                    <!-- --------------------------------------- VOO + HOTEL --------------------------------------- -->
+                    <section id="section-voohotel" class="hidden">
+                        <h2>Voo + Hotel</h2>
+                        <form>
+                            <label for="voohotelorigem">Origem (Voo):</label>
+                            <input type="text" id="voohotelorigem" name="voohotelorigem" placeholder="Porto"><br>
+
+                            <label for="voohoteldestino">Destino (Voo):</label>
+                            <input type="text" id="voohoteldestino" name="voohoteldestino" placeholder="Amsterdão"><br>
+
+                            <label for="voohotelpartida">Partida (Voo):</label>
+                            <div class="dropdown">
+                                <input type="date" id="voohotelpartida" name="voohotelpartida" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="voohotelchegada">Chegada (Voo):</label>
+                            <div class="dropdown">
+                                <input type="date" id="voohotelchegada" name="voohotelchegada" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="voohotelquantidadedepessoas">Quantidade(Crianças-Adultos-Idosos):</label>
+                            <input type="text" id="voohotelquantidadepessoas" name="voohotelquantidadepessoas"
+                                placeholder="2-2-1"><br>
+
+                            <label for="voohoteltipo-viagem">Tipo de Viagem:</label>
+                            <select id="voohoteltipo-viagem" name="tipo-viagem">
+                                <option value="voohotelida">Apenas Ida</option>
+                                <option value="voohotelida-volta">Ida e Volta</option>
+                            </select>
+
+                            <label for="voohotelqualidade">Qualidade de Viagem:</label>
+                            <select id="voohotelqualidade" name="voohotelqualidade">
+                                <option value="ida">Económica</option>
+                                <option value="ida-volta">Executiva</option>
+                                <option value="ida-volta">Primeira Classe</option>
+                            </select>
+
+                            <label for="voohotellocalizacao">Localização (Hotel):</label>
+                            <input type="text" id="voohotellocalizacao" name="voohotellocalizacao"
+                                placeholder="Amsterdão"><br>
+
+                            <label for="voohotelcheckin">Check In (Hotel):</label>
+                            <div class="dropdown">
+                                <input type="date" id="voohotelcheckin" name="voohotelcheckin" placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="voohotelcheckout">Check Out (Hotel):</label>
+                            <div class="dropdown">
+                                <input type="date" id="voohotelcheckout" name="voohotelcheckout"
+                                    placeholder="dd/mm/aaaa">
+                            </div>
+
+                            <label for="categoria">Categoria:</label>
+                            <div class="rating">
+                                <input type="radio" id="voohotel-star5" name="voohotel-categoria" value="5">
+                                <label for="voohotel-star5" title="5 estrelas">&#9733;</label>
+                                <input type="radio" id="voohotel-star4" name="voohotel-categoria" value="4">
+                                <label for="voohotel-star4" title="4 estrelas">&#9733;</label>
+                                <input type="radio" id="voohotel-star3" name="voohotel-categoria" value="3">
+                                <label for="voohotel-star3" title="3 estrelas">&#9733;</label>
+                                <input type="radio" id="voohotel-star2" name="voohotel-categoria" value="2">
+                                <label for="voohotel-star2" title="2 estrelas">&#9733;</label>
+                                <input type="radio" id="voohotel-star1" name="voohotel-categoria" value="1">
+                                <label for="voohotel-star1" title="1 estrela">&#9733;</label>
+                            </div>
+
+                            <input type="submit" value="Confirmar"
+                                onclick="window.location.href = 'voo.html'; return false;">
+
+
+                        </form>
+                    </section>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!--==================== Recomendações Para Ti ====================-->
+        <section class="place section" id="recomendacoes">
+            <h2 class="section__title">Recomendações para ti</h2>
+            <p class="video__description">Explore viagens exclusivas, especialmente selecionadas para ti, com base no
+                teu perfil e experiências anteriores!
+            </p>
+
+            <div class="place__container container grid">
+                <!--==================== PLACES CARD 1 ====================-->
+                <div class="place__card">
+                    <a href="voo.html" class="place__link">
+                        <img src="assets/img/lisboa.jpg" alt="" class="place__img">
+
+                        <div class="place__content">
+                            <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                <span class="place__rating-number">4,8</span>
+                            </span>
+
+                            <div class="place__data">
+                                <h3 class="place__title">Lisboa</h3>
+                                <span class="place__subtitle">Portugal</span>
+                                <span class="place__price">500€</span>
+                            </div>
+                        </div>
+
+                        <button class="button button--flex place__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </a>
+                </div>
+
+                <!--==================== PLACES CARD 2 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/guimaraes.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">5,0</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Guimarães</h3>
+                            <span class="place__subtitle">Portugal</span>
+                            <span class="place__price">100€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 3 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/aveiro.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,9</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Aveiro</h3>
+                            <span class="place__subtitle">Portugal</span>
+                            <span class="place__price">100€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 4 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/viseu.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Viseu </h3>
+                            <span class="place__subtitle">Portugal</span>
+                            <span class="place__price">100€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 5 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/leiria.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Leiria</h3>
+                            <span class="place__subtitle">Portugal</span>
+                            <span class="place__price">100€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!--==================== Top5Destinos ====================-->
+        <section class="place section" id="top5destinos">
+            <h2 class="section__title">Top 5 Destinos</h2>
+            <p class="video__description">Explore estas opções de viagem altamente
+                populares.</p>
+            <p class="video__description"> São a combinação perfeita de destinos atrativos, acomodações de
+                qualidade, atividades estimulantes e serviços excecionais, garantindo uma experiência memorável para
+                todos os viajantes!
+            </p>
+            <div class="place__container container grid">
+                <!--==================== PLACES CARD 1 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place1.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Bali</h3>
+                            <span class="place__subtitle">Indonesia</span>
+                            <span class="place__price">2499€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+
+                </div>
+
+                <!--==================== PLACES CARD 2 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place2.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">5,0</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Bora Bora</h3>
+                            <span class="place__subtitle">Polinesia</span>
+                            <span class="place__price">1599€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 3 ====================-->
+                <div class="place__card">
+                    <a href="voo2.html" class="place__link">
+
+                        <img src="assets/img/place3.jpg" alt="" class="place__img">
+
+                        <div class="place__content">
+                            <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                <span class="place__rating-number">4,9</span>
+                            </span>
+
+                            <div class="place__data">
+                                <h3 class="place__title">Hawaii</h3>
+                                <span class="place__subtitle">EE.UU</span>
+                                <span class="place__price">3499€</span>
+                            </div>
+                        </div>
+
+                        <button class="button button--flex place__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </a>
+                </div>
+
+                <!--==================== PLACES CARD 4 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place4.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Whitehaven</h3>
+                            <span class="place__subtitle">Australia</span>
+                            <span class="place__price">2499€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 5 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place5.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4,8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Hvar</h3>
+                            <span class="place__subtitle">Croacia</span>
+                            <span class="place__price">1999€</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!--==================== VIDEO ====================-->
+        <section class="video section">
+            <h2 class="section__title">Video Tour</h2>
+
+            <div class="video__container container">
+                <p class="video__description">Explore Lisboa: história, cultura, paisagens deslumbrantes. Castelo de São
+                    Jorge, Torre de Belém, bairro de Alfama. Pastéis de nata. Novos destinos todas as semanas.
+                </p>
+
+                <div class="video__content">
+                    <video id="video-file">
+                        <source src="assets/video/video.mp4" type="video/mp4"> <!--Creditos do video: https://www.youtube.com/watch?v=hWRmyqrq2MM-->
+                    </video>
+
+                    <button class="button button--flex video__button" id="video-button">
+                        <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SUBSCRIBE ====================-->
+        <!-- <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">Subscribe Our <br> Newsletter</h2>
+                    <p class="subscribe__description">Subscribe to our newsletter and get a
+                        special 30% discount.
+                    </p>
+
+                    <form action="" class="subscribe__form">
+                        <input type="text" placeholder="Enter email" class="subscribe__input">
+
+                        <button class="button">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section> -->
+
+        <!--==================== SPONSORS ====================-->
+        <section class="sponsor section">
+            <div class="sponsor__container container grid">
+                <div class="sponsor__content">
+                    <img src="assets/img/sponsor1.png" style="margin-top: -10px;width: 100px;" alt=""
+                        class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="assets/img/sponsor2.png" style="width: 125px;" alt="" class="sponsor__img">
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Travel</h3>
+                    <p class="footer__description">Travel you choose the <br> destination,
+                        we offer you the <br> experience.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Features</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">New & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Company</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Team</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Plan y Pricing</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Become a member</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Support</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">FAQs</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Support Center</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&#169; All rigths reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">ChatBot!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="ChatBot/static/scripts/responses.js"></script>
+<script src="ChatBot/static/scripts/chat.js"></script>
+
+</html>

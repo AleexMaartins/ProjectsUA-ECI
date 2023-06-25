@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles_profile.css">
+    <title>TriPlanner</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <a href="index.html" class="nav__logo">TriPlanner</a>
+
+                    <li class="nav__item">
+                        <a href="login.html" class="nav__logo2">Logout</a>
+                    </li>
+
+                </ul>
+
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="profile_info">
+            <h1 style="color:white">Meu Perfil</h1>
+            <div class="profile_bg"></div>
+            <div>
+                <form>
+                    <label style="color:white" for="name" >Nome:</label><h5></h5>
+                    <input type="text" id="name" name="name" placeholder="Mariana"><br><br>
+                    <label style="color:white" for="email">Email:</label><h5></h5>
+                    <input type="email" id="email" name="email" placeholder="mariana@gmail.com"><br><br>
+                    <label style="color:white" for="password">Password:</label><h5></h5>
+                    <input type="password" id="password" name="pao"placeholder="*"><br><br>
+                    <label style="color:white" for="idade">Idade:</label><h5></h5>
+                    <input type="idade" id="idade" name="idade" placeholder="34"><br><br>
+                    <label style="color:white" for="phone">Phone:</label><h5></h5>
+                    <input type="tel" id="phone" name="phone" placeholder="918765432"><br><br>
+
+                    <!--==================== Country ====================-->
+                    <label style="color:white" for="country">País:</label><h5></h5>
+                    <select id="country" name="country">
+                        <option value="Argentina" selected>Argentina</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Barbados" selected>Barbados</option>
+                        <option value="Belgium" selected>Belgium</option>
+                        <option value="Bolivia" selected>Bolivia</option>
+                        <option value="Brazil" selected>Brazil</option>
+                        <option value="Canada" selected>Canada</option>
+                        <option value="Chile" selected>Chile</option>
+                        <option value="China" selected>China</option>
+                        <option value="Costa Rica" selected>Costa Rica</option>
+                        <option value="Cuba" selected>Cuba</option>
+                        <option value="Denmark" selected>Denmark</option>
+                        <option value="Dominican Republic" selected>Dominican Republic</option>
+                        <option value="Ecuador " selected>Ecuador </option>
+                        <option value="Egypt" selected>Egypt</option>
+                        <option value="El Salvador" selected>El Salvador</option>
+                        <option value="England" selected>England</option>
+                        <option value="France" selected>France</option>
+                        <option value="Germany" selected>Germany</option>
+                        <option value="Greece" selected>Greece</option>
+                        <option value="Guatemala" selected>Guatemala</option>
+                        <option value="Haiti" selected>Haiti</option>
+                        <option value="India" selected>India</option>
+                        <option value="Ireland" selected>Ireland</option>
+                        <option value="Italy" selected>Italy</option>
+                        <option value="Japan" selected>Japan</option>
+                        <option value="Luxembourg" selected>Luxembourg</option>
+                        <option value="Malaysia" selected>Malaysia</option>
+                        <option value="Mexico" selected>Mexico</option>
+                        <option value="Netherlands" selected>Netherlands</option>
+                        <option value="New Zealand" selected>New zealand</option>
+                        <option value="Norway" selected>Norway</option>
+                        <option value="Panama" selected>Panama</option>
+                        <option value="Peru" selected>peru</option>
+                        <option value="Philippines" selected>Philippines</option>
+                        <option value="Poland" selected>Poland</option>
+                        <option value="Russia" selected>Russia</option>
+                        <option value="Singapore" selected>Singapore</option>
+                        <option value="South Africa" selected>South Africa</option>
+                        <option value="South korea" selected>South Korea</option>
+                        <option value="Spain" selected>Spain</option>
+                        <option value="Sweden" selected>Sweden</option>
+                        <option value="Switzerland" selected>Switzerland</option>
+                        <option value="Thailand" selected>Thailand</option>
+                        <option value="Turkey" selected>Turkey</option>
+                        <option value="United Arab Emirates" selected>United Arab Emirates</option>
+                        <option value="United Kingdom" selected>United Kingdom</option>
+                        <option value="United States of America" selected>United States of America</option>
+                        <option value="Portugal" selected>Portugal</option>
+                    </select><br><br>
+                    <input href="#" class="button" type="submit" value="Atualizar perfil">
+                </form>
+            </div>
+        </div>
+        
+
+        <!--==================== SUBSCRIBE ====================-->
+        <span style="border-radius: 10px;" class="subscribe_section">
+            <div style="border-radius: 10px;" class="subscribe_section">
+                <div style="border-radius: 10px; background-color: rgb(14, 55, 63);" class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">Subscrever à nossa <br> Newsletter</h2>
+                    <p class="subscribe__description">Subscreve à nossa newsletter e recebe um disconto especial de 30%.
+                    </p>
+                    <form action="" class="subscribe__form">
+                        <input type="text" placeholder="Inserir email" class="subscribe__input">
+
+                        <button class="button">
+                            Subscrever
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </span>
+
+        
+
+        <!--==================== Trips Progress ====================-->
+        <div class="trips_section">
+            <h3 style="color: rgb(14, 55, 63)">space</h3>
+            <h2 class="section_title">As minhas viagens</h2>
+
+            <div class="trips_container container grid">
+                <!--==================== Trip 1 ====================-->
+                <div class="trips_content">
+                    <div>
+                        <h3 class="trips_title">Viajem a Paris</h3>
+                        <span class="trips_subtitle">Paris, France, Flight 204, Date:2023-02-13, Seat:19A, Hotel Atrium</span>
+                    </div>
+
+                    <div>
+                        <div class="progress_container">
+                            <div class="progress_bar" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== Trip 2 ====================-->
+                <div class="trips_content">
+                    <div>
+                        <h3 class="trips_title">Viajem a Roma</h3>
+                        <span class="trips_subtitle">Rome, Italy, Flight 146, Date:2022-08-03, Seat:03B, Colony Hotel</span>
+                    </div>
+
+                    <div>
+                        <div class="progress_container">
+                            <div class="progress_bar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== Trip 3 ====================-->
+                <div class="trips_content">
+                    <div>
+                        <h3 class="trips_title">Viajem a Londres</h3>
+                        <span class="trips_subtitle">London, England, Flight 123, Date:2022-05-20, Seat:12A, Notting Hill Gate Hotel</span>
+                    </div>
+
+                    <div>
+                        <div class="progress_container">
+                            <div class="progress_bar" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!--==================== Trip 4 ====================-->
+                <div class="trips_content">
+                    <div>
+                        <h3 class="trips_title">Viajem a Tokyo</h3>
+                        <span class="trips_subtitle">Tokyo, Japan, Flight 308, Date:2021-06-24, Seat:27A, Hotel East 21 Tokyo</span>
+                    </div>
+
+                    <div>
+                        <div class="progress_container">
+                            <div class="progress_bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== Trip 5 ====================-->
+                <div class="trips_content">
+                    <div>
+                        <h3 class="trips_title">Viajem a New delhi</h3>
+                        <span class="trips_subtitle">New Delhi, India, Flight 258, Date:2019-11-01, Seat:20B, The Lalit New Delhi</span>
+                    </div>
+
+                    <div>
+                        <div class="progress_container">
+                            <div class="progress_bar" style="width: 120%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 style="color: rgb(14, 55, 63)">space</h3>
+        </div>
+
+        
+
+
+      <!--==================== SPONSORS ====================-->
+      <section class="sponsor section">
+        <div class="sponsor__container container grid">
+            <div class="sponsor__content">
+                <img src="assets/img/sponsor1.png" style = "margin-top: -10px;width: 100px;" alt="" class="sponsor__img">
+            </div>
+            <div class="sponsor__content">
+                <img src="assets/img/sponsor2.png" style="width: 125px;" alt="" class="sponsor__img">
+            </div>
+            
+        </div>
+    </section>
+</main>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Travel</h3>
+                    <p class="footer__description">Travel you choose the <br> destination,
+                        we offer you the <br> experience.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Features</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">New & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Company</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Team</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Plan y Pricing</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Become a member</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Support</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">FAQs</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Support Center</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&#169;    All rigths  reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/profile.js"></script>
+</body>
+
+
+</html>

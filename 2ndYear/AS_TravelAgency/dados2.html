@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/dados.css">
+
+    <!--=============== ChatBot ===============-->
+    <link rel="stylesheet" href="ChatBot/static/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>TriPlanner</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <a href="index.html" class="nav__logo">TriPlanner</a>
+
+                    <li class="nav__item">
+                        <a href="reserva2.html" class="nav__link">A sua reserva</a><!--     -->
+                    </li>
+                    <li class="nav__item">
+                        <a href="dados2.html" class="nav__link active-link">Os seus dados</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="Confirmation2.html" class="nav__link">Confirmação</a><!--     -->
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="profile2.html" class="nav__logo2">Perfil</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="login.html" class="nav__logo2">Logout</a>
+                    </li>
+
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <!--==================== QUEM IRÁ VIAJAR ====================-->
+        <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h1 class ="reserva_header" align="center">Indique quem irá viajar</h1>
+                    
+                    <div class="rectangle">
+                        <h1 class = "voo_header"><u>Adulto 1</u>
+                            <div class = "checkbox-wrapper1">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox">Responsável da reserva</label>
+                            </div>
+                        </h1>
+
+                        
+                        
+                        
+                        <div class="thin_rectangle2">
+                            <div class="form-container1">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Primeiro nome:</label>
+                                        <input type="text" id="name" name="name">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="lastname" style="color:#fff">Apelido:</label>
+                                      <input type="text" id="lastname" name="lastname">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class="form-container2">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="telephone" style="color:#fff">Telefone:</label>
+                                        <input type="tel" id="telephone" name="telephone">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="email" style="color:#fff">&nbsp&nbsp&nbsp&nbspIdade:</label>
+                                      <input type="date" id="age" name="age" placeholder="dd/mm/aaaa">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class = "checkbox-wrapper2">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox" style="color:#fff"><strong>Dados de identificação (opcional)</strong></label>
+                            </div>
+                            
+                            <div class = "checkbox-wrapper3">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox" style="color:#fff"><strong>Passageiro frequente (opcional)</strong></label>
+                            </div>
+                        
+
+                        </div>
+
+                        <h1 class = "adulto_2"><u>Adulto 2</u>
+                            <div class = "checkbox-wrapper1">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox">Responsável da reserva</label>
+                            </div>
+                        </h1>
+
+                        <div class="thin_rectangle3">
+                            <div class="form-container1">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Primeiro nome:</label>
+                                        <input type="text" id="name" name="name">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="lastname" style="color:#fff">Apelido:</label>
+                                      <input type="text" id="lastname" name="lastname">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class="form-container2">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Telefone:</label>
+                                        <input type="tel" id="telephone" name="telephone">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="email" style="color:#fff">&nbsp&nbsp&nbsp&nbspIdade:</label>
+                                      <input type="date" id="age" name="age" placeholder="dd/mm/aaaa">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class = "checkbox-wrapper2">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox" style="color:#fff"><strong>Dados de identificação (opcional)</strong></label>
+                            </div>
+                            
+                            <div class = "checkbox-wrapper3">
+                                <input type="checkbox" id="myCheckbox">
+                                <label for="myCheckbox" style="color:#fff"><strong>Passageiro frequente (opcional)</strong></label>
+                            </div>
+                        
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!--==================== DADOS DE FATURACAO ====================-->
+        <section class="subscribe section" style="margin-top: -100px;">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h1 class ="reserva_header" align="center">Dados de faturação</h1>
+                    
+                    <div class="rectangle" style="height:340px">
+                        <h1 class = "voo_header"><u></u>
+                            <div class = "checkbox-wrapper1">
+                            </div>
+                        </h1>
+
+                        
+                        
+                        
+                        <div class="thin_rectangle2" style="height:200px">
+                            <div class="form-container1" style="margin-left: 159px;">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Morada:</label>
+                                        <input type="text" id="name" name="name">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="postalcode" style="color:#fff">Código postal:</label>
+                                      <input type="text" id="lastname" name="lastname" placeholder="ex.: 1200-123 Lisboa">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class="form-container2" style="margin-left: 137px;">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Localidade:</label>
+                                        <input type="text" id="location" name="location">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="country" style="color:#fff">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaís:</label>
+                                      <input type="text" id="country" name="country">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            <div class="form-container3" style="margin-left: 137px;">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="NIF" style="color:#fff">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNIF:</label>
+                                        <input type="number" id="NIF" name="NIF">
+                                        
+                                    </form>
+                                </div>
+                                
+                
+                            </div>
+                            
+                            <h3 class="empresa_choice" style="color: #fff;"><strong>Empresa?</strong>
+                                <div class="option_checker">
+                                    <label>
+                                    <input type="radio" name="choice-radio">
+                                    Sim
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="choice-radio">
+                                    Não
+                                    </label>
+                                </div>
+                            </h3>
+                        </div>    
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== MÉTODOS DE PAGAMENTO ====================-->
+        <section class="subscribe section" style="margin-top: -100px;">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h1 class ="reserva_header" align="center">Métodos de pagamento</h1>
+                    
+                    <div class="rectangle" style="height:340px">
+                        <h1 class = "voo_header"><u></u>
+                            <div class = "checkbox-wrapper1">
+                            </div>
+                        </h1>
+
+                        
+                        
+                        
+                        <div class="thin_rectangle2" style="height:250px">
+
+                            
+
+                            <div class="form-container1" style="margin-left: 100px; margin-top: 70px;">
+                                <div class="form-group">
+                                    <form>
+                                        <label for="name" style="color:#fff">Nome no cartão:</label>
+                                        <input type="text" id="name" name="name">
+                                        
+                                    </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <form>
+                                      <label for="cardnumber" style="color:#fff">Nº do cartão:</label>
+                                      <input type="text" id="cardnumber" name="cardnumber">
+                                      
+                                    </form>
+                                </div>
+                
+                            </div>
+
+                            
+                            
+                            <h3 class="pagamento_choice" style="color: #fff;"><strong><u>Método de pagamento</u></strong>
+                                <div class="option_checker2">
+                                    <label>
+                                    <input type="radio" name="choice-radio">
+                                    Pagamento com cartão
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="choice-radio">
+                                    PayPal
+                                    </label>
+                                </div>
+                            </h3>
+
+                            
+
+                            <div class="cartao-container" style="color:#fff">
+                                <div class="form-group1007">
+                                  <label for="month">Mês de validade:</label>
+                                  <select id="month" name="month">
+                                    <option value="January">Janeiro</option>
+                                    <option value="February">Fevereiro</option>
+                                    <option value="March">Março</option>
+                                    <option value="March">Abril</option>
+                                    <option value="March">Maio</option>
+                                    <option value="March">Junho</option>
+                                    <option value="March">Julho</option>
+                                    <option value="March">Agosto</option>
+                                    <option value="March">Setembro</option>
+                                    <option value="March">Outubro</option>
+                                    <option value="March">Novembro</option>
+                                    <option value="March">Dezembro</option>
+                                    <!-- Add more month options as needed -->
+                                  </select>
+                                </div>
+                              
+                                <div class="form-group">
+                                  <label for="year">Ano de validade:</label>
+                                  <select id="year" name="year">
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="March">2026</option>
+                                    <option value="March">2027</option>
+                                    <option value="March">2028</option>
+                                    <!-- Add more year options as needed -->
+                                  </select>
+                                </div>
+                              
+                                <div class="form-group">
+                                  <!-- Third form with no specific input -->
+                                  <form>
+                                    <label for="cardnumber" style="color:#fff">CVC do cartão:</label>
+                                      <input type="text" id="cardnumber" name="cardnumber">
+                                  </form>
+                                </div>
+                            </div>
+
+                            <h2 style="margin-left:100px;position: absolute;margin-top:190px;color: #fff;"><strong>Total a pagar:</strong> 2.000 €</h2>
+
+                        </div>    
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <a href="Confirmation2.html"><button  class="confirmation_button">Confirmar reserva</button></a>
+        
+      <!--==================== SPONSORS ====================-->
+      <section class="sponsor section">
+        <div class="sponsor__container container grid">
+            <div class="sponsor__content">
+                <img src="assets/img/sponsor1.png" style = "margin-top: -10px;width: 100px;" alt="" class="sponsor__img">
+            </div>
+            <div class="sponsor__content">
+                <img src="assets/img/sponsor2.png" style="width: 125px;" alt="" class="sponsor__img">
+            </div>
+            
+        </div>
+    </section>
+</main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Travel</h3>
+                    <p class="footer__description">Travel you choose the <br> destination,
+                        we offer you the <br> experience.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Features</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">New & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Company</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Team</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Plan y Pricing</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Become a member</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Support</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">FAQs</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Support Center</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&#169;    All rigths  reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">ChatBot!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== Reserva JS ===============-->
+    <script src="assets/js/dados.js"></script>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="ChatBot/static/scripts/responses.js"></script>
+<script src="ChatBot/static/scripts/chat.js"></script>
+
+</html>
