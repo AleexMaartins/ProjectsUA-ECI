@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.flight {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.flight .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.flight .details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flight .details .item {
+  text-align: center;
+}
+
+.flight .details .item p {
+  margin: 5px 0;
+}
+
+.flight .details .item .label {
+  font-size: 14px;
+  color: #888;
+}
+
+.flight .details .item .value {
+  font-size: 15px;
+  font-weight: bold;
+}
+.container{
+  margin-top:1cm;
+}
+.flight .reserve-button {
+  margin-top: 10px;
+  margin-left:11cm;
+  background-color: #00ced1;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.navbar {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.navbar li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  color: #378a8c;
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 1cm;
+}

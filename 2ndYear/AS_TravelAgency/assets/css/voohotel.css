@@ -1,0 +1,34 @@
+#content2 {
+  margin: 20px;
+}
+
+.voohotel h2 {
+  color: #333;
+}
+
+.voohotel form {
+  margin-bottom: 20px;
+}
+
+.voohotel label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.voohotel input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.voohotel input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
