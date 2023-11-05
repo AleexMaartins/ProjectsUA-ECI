@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+
+    <title>DetiShop - Admin</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                eHealth
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                    <!-- <li class="nav__item"><a href="/userperm" class="nav__link">Users Manager</a></li> -->
+                    <li class="nav__item"><a href="/cart" class="nav__link">Cart</a></li>
+                    <li class="nav__item"><a id="logout" href="/login" class="nav__link">Logout</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <h4>{{user}}</h4>
+
+    </main>
+    <!--MEGA INCOMPLETO (rascunho inicial)-->
+    <h1>User Data in the Database</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Cart</th>
+                <th>History</th>
+                <th>Wishlist</th>
+
+                <!-- Add other columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users_data %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+                <td>{{ user[4] }}</td>
+                <td>{{ user[5] }}</td>
+                <td>{{ user[6] }}</td>
+
+                <!-- Add other columns as needed -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1>Edit User Data</h1>
+    <form action="/usermanager" method="POST">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required>
+
+        <label for="new_name">New Name:</label>
+        <input type="text" id="new_name" name="new_name" required>
+
+        <label for="new_password">New Password:</label>
+        <input type="password" id="new_password" name="new_password" required>
+
+        <button type="submit">Edit User</button>
+    </form>
+
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">eHealth Corp</a>
+                <span class="footer__description">Health Clinic</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+    <script>
+        // Obtém uma referência para o botão "Edit" e o formulário de mudança de senha
+        const editButton = document.getElementById("edit-button");
+        const passwordChangeForm = document.getElementById("password-change-form");
+
+        // Adiciona um evento de clique ao botão "Edit"
+        editButton.addEventListener("click", () => {
+            // Alterna a visibilidade do formulário de mudança de senha
+            if (passwordChangeForm.style.display === "none" || passwordChangeForm.style.display === "") {
+                passwordChangeForm.style.display = "block"; // Mostra o formulário
+            } else {
+                passwordChangeForm.style.display = "none"; // Oculta o formulário
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

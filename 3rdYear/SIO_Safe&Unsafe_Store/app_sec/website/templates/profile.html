@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+
+    <title>DetiShop - Profile</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                    {% if session['user_name'] == "admin" %}
+                    <li class="nav__item"><a href="/usermanager" class="nav__link">Users Manager</a></li>
+                    {% endif %}
+                    <li class="nav__item"><a href="/cart" class="nav__link">Cart</a></li>
+                    <li class="nav__item"><a  id="logout" href="/login" class="nav__link">Logout</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <h4>{{user}}</h4>
+
+    
+
+    </main>
+    
+    <section class="contact section bd-container">
+        <div class="contact__container bd-grid">
+            <div class="contact__data">
+                <span class="section-subtitle contact__initial">Profile</span>
+                <h2 class="section-title contact__initial">Information</h2>
+                <p class="contact__description">User name: {{ session['user_name'] }}</p> 
+                <p class="contact__description">Email: {{ session['user_email'] }}</p>
+                <!--  CONFIMRAR SE FAZ SENTIDO MOSTRAR A PASSWORD      
+                <p class="contact__description"> Password: {{ session['user_password'] }}</p> 
+                -->
+
+            </div>
+
+            <div class="contact__button">
+                <button id="edit-button" class="button">Edit</button>
+            </div>
+
+            <form method="POST" action="/profile">
+                <div id="password-change-form" style="display: none;">
+                    <h1>Change password</h1>
+                
+                    <label for="old_password">Enter Old Password:</label>
+                    <input type="password" id="old_password" name="old_password" placeholder="Old password" required>
+                    <br>
+                
+                    <label for="new_password">Enter New Password:</label>
+                    <input type="password" id="new_password" name="new_password" placeholder="New password">
+                    <br>
+                
+                    <label for="confirm_password">Confirm New Password:</label>
+                    <input type="password" name="confirm_password" placeholder="Confirm password" required>
+                
+                    <br>
+                    <button type="submit">Change password</button>
+                </div>
+                
+                        
+                <div class="flash-messages-container">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                
+        </div>
+    </section>
+        
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">eHealth Corp</a>
+                <span class="footer__description">Health Clinic</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+    
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+    
+    <script>
+        // Obtém uma referência para o botão "Edit" e o formulário de mudança de senha
+        const editButton = document.getElementById("edit-button");
+        const passwordChangeForm = document.getElementById("password-change-form");
+    
+        // Adiciona um evento de clique ao botão "Edit"
+        editButton.addEventListener("click", () => {
+            // Alterna a visibilidade do formulário de mudança de senha
+            if (passwordChangeForm.style.display === "none" || passwordChangeForm.style.display === "") {
+                passwordChangeForm.style.display = "block"; // Mostra o formulário
+            } else {
+                passwordChangeForm.style.display = "none"; // Oculta o formulário
+            }
+        });
+    </script>
+    
+
+</body>
+
+</html>

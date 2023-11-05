@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+    <title>DetiShop</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link ">About us</a></li>
+                    <li class="nav__item"><a href="#products" class="nav__link">Buy Products</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
+                    <li class="nav__item"> <a href="/cart" class="nav__link"><i
+                                class="fas fa-shopping-cart"></i>Cart</a></li>
+                    <li class="nav__item"> <a href="/orders" class="nav__link"> Orders</a></li>
+                    <li class="nav__item"><a href="/profile" class="nav__link">{{ session['user_name'] }}</a></li>
+                    <li class="nav__item"><a id="logout" href="/logout" class="nav__link">Logout </a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--========== HOME ==========-->
+        <section class="home" id="home">
+            <div class="home__container bd-container bd-grid">
+                <div class="home__data">
+                    <h1 class="home__title">Shop with us</h1>
+                    <h2 class="home__subtitle"> Quality is <br> Our middle name.</h2>
+                    <a href="#products" class="button">Shop now!</a>
+                </div>
+
+                <img src="../static/img/detishoplogo.png" id="detishoplogo" alt="" class="home__img">
+            </div>
+        </section>
+
+        <!--========== ABOUT ==========-->
+        <section class="about section bd-container" id="about">
+            <div class="about__container  bd-grid">
+                <div class="about__data">
+                    <span class="section-subtitle about__initial">About us</span>
+                    <h2 class="section-title about__initial">Your destination for Sustainability</h2>
+                    <p class="about__description">At Deti Shop, we believe in a brighter and more sustainable future for
+                        our planet. We are more than just a shop; we are a commitment to a lifestyle that cares for the
+                        environment, the well-being of future generations, and the beauty of our world.</p>
+                    <!-- <a href="#" class="button">Explore history</a> -->
+                </div>
+
+                <img src="../static/img/IMG_9975.jpg" alt="" class="about__img">
+            </div>
+        </section>
+
+
+        <!--========== products ==========-->
+        <section class="menu section bd-container" id="products">
+            <span class="section-subtitle">Buy Products</span>
+            <h2 class="section-title">Our Product Selection</h2>
+            <input type="text" id="myInput" onkeyup="searchbar()" placeholder="Search for products..">
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('mugs')"> Cups</button>
+                <button class="btn" onclick="filterSelection('bags')"> Bags</button>
+                <button class="btn" onclick="filterSelection('clothes')"> Clothes</button>
+                <button class="btn" onclick="filterSelection('cases')"> Phones</button>
+            </div>
+
+            <form method="POST" action="/move_to_cart">
+                <div class="menu__container bd-grid" id="myUL">
+                    {% for product in products %}
+                    <div class="menu__content filterDiv {{ product[5] }}">
+                        <!-- product[4] should contain the image filename -->
+                        <img src="{{ url_for('static', filename='img/' + product[6]) }}" alt="" class="menu__img">
+                        <!-- product[4] contains the image filename -->
+                        <h3 class="menu__name">{{ product[1] }}</h3> <!-- product[1] contains the product name -->
+                        <span class="menu__detail">{{ product[4] }}</span> <!-- product[4] contains the description -->
+                        <span class="menu__preci">{{ product[2] }}€</span> <!-- product[2] contains the price -->
+                        {% if product[3]==0 %}
+                        <br>
+                        <span class="menu__preci" style="color: rgb(155, 14, 14);">Out of stock</span>
+                        {% elif product[3] < 10 %} <br>
+                            <span class="menu__preci" style="color: rgb(194, 170, 34);">Low stock</span>
+                            {% else %}
+                            <br>
+                            <span class="menu__preci" style="color: rgb(47, 104, 14)" >In stock</span>
+                            {% endif %}
+                            <br>
+                            <button type="submit" class="button menu__button" name="product_id"
+                                value="{{ product[0] }}"><i class='bx bx-cart-alt'></i></button>
+                            <br>
+                            <button type="submit" class="button menu__review_button" name="review"
+                                value="{{ product[0] }}">Reviews</button>
+                    </div>
+            </form>
+            {% endfor %}
+            </div>
+        </section>
+
+
+
+
+
+
+        <!--========== CONTACT US ==========-->
+        <section class="contact section bd-container" id="contact">
+            <div class="contact__container bd-grid">
+                <div class="contact__data">
+                    <span class="section-subtitle contact__initial">Contact us</span>
+                    <h2 class="section-title contact__initial">Let's talk</h2>
+                    <p class="contact__description">Do you have any trouble? Don't hesitate to reach out! <br> We have a
+                        line open 24/7 that offers intant support!</p>
+                </div>
+
+                <div class="contact__button">
+                    <a href="#" class="button">Contact us now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">Deti Shop</a>
+                <span class="footer__description">Your favourite shop</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Products</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Mugs </a></li>
+                    <li><a href="#" class="footer__link">Sweats</a></li>
+                    <li><a href="#" class="footer__link">T-Shirts</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+
+
+    <!--========== LOGO DARK LIGHT MODE ==========-->
+
+
+
+</body>
+
+</html>

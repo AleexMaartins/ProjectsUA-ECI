@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+    <title>DetiShop - Orders</title>
+</head>
+
+<body style="padding-top: 80px;"">
+
+    <!--========== SCROLL TOP ==========-->
+    <a href=" #" class="scrolltop" id="scroll-top">
+    <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <div class="flash-messages-container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flash-messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"> <a href="/cart" class="nav__link"><i
+                                class="fas fa-shopping-cart"></i>Cart</a></li>
+
+                    <li class="nav__item"><a id="logout" href="/login" class="nav__link">Logout</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+
+        <div class="cart-table-container">
+            <h1 class="center-text" id="cart-text">Order History</h1>
+            <table class="cart-table-container" style="margin-top: 50px;">
+                <thead>
+                    <tr>
+                        <th class="center-text">Order ID</th>
+                        <th class="center-text">Order Date</th>
+                        <th class="center-text">Total Price</th>
+                        <th class="center-text">Reorder</th>
+                        <th class="center-text">Receipt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if orders_data %}
+                    {% for order_id, order in orders_data.items() %}
+                    <tr>
+                        <td>
+                            <div class="order-expand-button">
+                                <button class="expand-button">+</button>
+                                Order ID: {{ order_id }}
+                            </div>
+                        </td>
+                        <td>{{ order["order_date"] }}</td>
+                        <td>${{ order["total_price"] }}</td>
+                        <td style="text-align: center;">
+                            <form method="POST" action="/reorder">
+                                <button type="submit" class="button" name="order_id"
+                                    value="{{ order_id }}">Reorder</button>
+                            </form>
+
+                        </td>
+
+                        <td style="text-align: center;">
+                            <form method="POST" action="/download">
+                                <input type="hidden" name="order_id" value="{{ order_id }}">
+                                <button type="submit" class="button">Download</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr class="order-details-row" style="display: none;">
+                        <td colspan="4">
+                            <ul>
+                                {% for product in order["products"] %}
+                                <li>{{ product["name"] }} (Quantity: {{ product["quantity"] }})</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+            <a href="/" class="button" style="margin-top: 25px;">Continue Shopping</a>
+            <a href="/checkout" class="button">Checkout</a> <!-- inrentional typo, generates vulnerability-->
+            <a href="/cart" class="button">Cart</a>
+        </div>
+    </main>
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">Deti Shop</a>
+                <span class="footer__description">Health Clinic</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Psychotherapy </a></li>
+                    <li><a href="#" class="footer__link">Physical therapy</a></li>
+                    <li><a href="#" class="footer__link">Speech therapy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+
+
+</body>
+
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const expandButtons = document.querySelectorAll(".expand-button");
+
+        expandButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const detailsRow = button.closest("tr").nextElementSibling;
+
+                if (detailsRow.style.display === "none" || detailsRow.style.display === "") {
+                    detailsRow.style.display = "table-row";
+                    button.textContent = "-";
+                } else {
+                    detailsRow.style.display = "none";
+                    button.textContent = "+";
+                }
+            });
+        });
+    });
+</script>

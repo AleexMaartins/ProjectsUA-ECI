@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+    <title>DetiShop - Social</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                    <li class="nav__item"> <a href="/cart" class="nav__link"><i class="fas fa-shopping-cart"></i>
+                            Cart</a></li>
+                    <li class="nav__item"> <a href="/orders" class="nav__link"> Orders</a></li>
+                    <li class="nav__item"><a href="/profile" class="nav__link">{{ session['user_name'] }}</a></li>
+                    <li class="nav__item"><a id="logout" href="/logout" class="nav__link">Logout </a></li>
+                    <!-- <li><i class='bx bx-moon change-theme' id="theme-button"></i></li> -->
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+
+
+        <!--========== ABOUT ==========-->
+
+
+        <section class="contact section bd-container">
+            <div class="contact__container bd-grid">
+                <div class="contact__data">
+                    <h2 class="section-title contact__initial">Reviews</h2>
+
+                </div>
+        </section>
+
+
+
+        <form method="POST" action="/move_to_cart">
+            {% for product in products %}
+
+            <div class="review__content filterDiv {{ product[5] }}">
+                <img src="{{ url_for('static', filename='img/' + product[6]) }}" alt="" class="review__img">
+                <div class="review__content2 filterDiv {{ product[5] }}">
+                    <h3 class="review__name">{{ product[1] }}</h3>
+                    <span class="review__detail">{{ product[4] }}</span>
+                    <span class="review__preci">{{ product[2] }}€</span>
+                    {% if product[3] == 0 %}
+                    <br>
+                    <span class="menu__preci" style="color: rgb(155, 14, 14);">Out of stock</span>
+                    {% elif product[3] < 10 %} <br>
+                        <span class="menu__preci" style="color: rgb(194, 170, 34);">Low stock</span>
+                        {% else %}
+                        <br>
+                        <span class="menu__preci" style="color: rgb(47, 104, 14)">In stock</span>
+                        {% endif %}
+                </div>
+            </div>
+        </form>
+
+        {% endfor %}
+        </section>
+
+
+        <h2 class="review__title">Add review</h2>
+        <form method="post" action="/add_review" class="review__form">
+            <input type="hidden" name="product_id" value="{{ product_id }}">
+            <label for="author">Author: {{ session['user_name'] }}</label>
+            <label for="rating">Rating:</label>
+            <input type="number" name="rating" min="1" max="5" required><br>
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment-input" placeholder="Write your comment here" required></textarea><br>
+            <input type="submit" value="Add review">
+        </form>
+
+        <h3 class="review__title2">Other Reviews</h3>
+
+        <ul class="review-list">
+            {% for review in reviews %}
+            <li class="review-item">
+                <strong class="user">User: {{ review[2] }}</strong><br>
+                <strong class="rating">Rating: {{ review[4] }}/5</strong><br>
+                <span class="comment">{{ review[3] }}</span>
+            </li>
+            <br>
+            {% endfor %}
+        </ul>
+
+
+        
+    </main>
+
+
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>
