@@ -23,7 +23,7 @@ Em seguida apresentamos uma lista das vulnerabilidades apresentadas:
   - Diogo Silva, 104341
   - Tomás Rodrigues, 104090
 
-## How to run: 
+## Como correr: 
 
 Para correr a aplicação
 
@@ -46,7 +46,18 @@ Para correr a aplicação
     ```` bash
    pip install -r requirements.txt
    ````
+
 4. Por fim executar o comando
     ```` bash
-    flask run
+    python main.py
    ````
+## Contas pré-criadas:
+1. Admin:
+- Email: admin@gmail.com
+- Password: admin
+2. Usuário normal:
+- Email: alex@gmail.com
+- Password: 1
+3. Usuário normal:
+- Email: eve@gmail.com
+- Password: 1

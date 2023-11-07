@@ -1,6 +1,6 @@
 import random
 import time
-from flask import Flask, jsonify, render_template, request, redirect, request, flash, session
+from flask import Flask, render_template, request, redirect, request, flash, session
 import sqlite3
 import os
 from flask import send_file
@@ -14,7 +14,7 @@ def init_db():
 
     #################### users table ####################
 
-    cursor.execute("""DROP TABLE IF EXISTS users""") #user_history & user_wishlist will be removed later
+    cursor.execute("""DROP TABLE IF EXISTS users""") 
     cursor.execute("""CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
     email TEXT NOT NULL,
@@ -74,7 +74,6 @@ def init_db():
     FOREIGN KEY (product_id) REFERENCES products (id)
     );""")
     
-    # Insert items into the cart table TEST - REMOVE LATER  
     cursor.execute("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)",
         (2, 1, 1))  
     cursor.execute("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)",
@@ -126,7 +125,7 @@ def init_db():
 
     
     cursor.execute("INSERT INTO social (name, comment, rating, product_id) VALUES (?, ?, ?, ?)",
-            ('Alex', "Pretty nice. Liked it fr fr", 4, 1)) 
+            ('Alex', "Pretty nice.", 4, 1)) 
     cursor.execute("INSERT INTO social (name, comment, rating, product_id) VALUES (?, ?, ?, ?)",
             ('Eve', "mid", 3, 1)) 
     cursor.execute("INSERT INTO social (name, comment, rating, product_id) VALUES (?, ?, ?, ?)",
@@ -209,9 +208,11 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 init_db()
 
 
+
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    # Fetch products from the database
+    if not session.get('user_email'):
+        return redirect('/login')
     connection = sqlite3.connect('data.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM products")
@@ -220,7 +221,6 @@ def home():
     connection.close()
     
     return render_template('home.html', products=products)
-
 
 # get current user 
 def get_current_user_id():
@@ -249,7 +249,6 @@ def login():
         if password != 'admin' and password != '1':
             password = hash(password)
 
-        print (password)
         
         result, msg, email, password, user_name = authenticate_user(email, password)
         
@@ -271,6 +270,8 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('user_name', None)  # Remove user_name from the session
+    session.pop('user_email', None)  # Remove user_email from the session
+    session.pop('user_password', None)  # Remove user_password from the session
     return redirect('/login')
 
 @app.route('/sign-up', methods=['POST', 'GET'])
@@ -337,6 +338,9 @@ def hash(input):
 @app.route('/profile', methods=['GET','POST'])
 
 def change_password():
+    if not session.get('user_email'):
+        return redirect('/login')
+    
     if request.method == 'POST':
         old_password = request.form['old_password']
         password = request.form['new_password']
@@ -367,6 +371,7 @@ def change_password():
 
 
 def passworder_changer(password):
+    
     user_email = session.get('user_email')
     connection = sqlite3.connect('data.db', check_same_thread=False)
     cursor = connection.cursor()
@@ -385,7 +390,8 @@ def passworder_changer(password):
 
 @app.route('/usermanager', methods=['GET','POST'])
 def edit_user():
-
+    if not session.get('user_email'):
+        return redirect('/login')
     connection = sqlite3.connect('data.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM users")
@@ -442,6 +448,8 @@ def user_editor(id, name, password):
 # ---- DOWNLOAD ORDER--- 
 @app.route('/download', methods=['POST'])
 def download():
+    if not session.get('user_email'):
+        return redirect('/login')
     # Retrieve order_id from the form data
     order_id = request.form.get('order_id')
 
@@ -495,6 +503,8 @@ def download():
 
 @app.route("/social")
 def social():
+    if not session.get('user_email'):
+        return redirect('/login')
     # Remove the argument from the route
     review = request.args.get('review')  # Retrieve 'review' from the URL query parameter
     connection = sqlite3.connect("data.db")
@@ -507,30 +517,24 @@ def social():
     if products:
         product_id = products[0][0]  # Extract the product ID from the selected product
         # Retrieve reviews from the "social" table for the selected product
-        print(f"Product ID: {product_id}")
         cursor.execute("SELECT * FROM social WHERE product_id = ?", (product_id,))
 
         reviews = cursor.fetchall()
-        print (reviews)
 
     connection.close()
-    print("reviews: ", reviews)
     return render_template('social.html', products=products, reviews=reviews, product_id=product_id)
 
 #------------------------ ADD REVIEW -------------------------------------------
 @app.route("/add_review", methods=['POST'])
 def add_review():
+    if not session.get('user_email'):
+        return redirect('/login')
     if request.method == 'POST':
         user_id = get_current_user_id()
         name = session['user_name']
         product_id = request.form.get('product_id')
         comment = request.form.get('comment')
         rating = request.form.get('rating')
-        #Debugging
-        print(f"User ID: {user_id}")
-        print(f"Product ID: {product_id}")
-        print(f"Comment: {comment}")
-        print(f"Rating: {rating}")
 
         # Insert the review into the database
         update_review_ADD(user_id, name, product_id, comment, rating)
@@ -538,7 +542,6 @@ def add_review():
         # Redirect back to the social page with the selected product_id
         return redirect(f'/social?review={product_id}')
     else:
-        print(user_id, name, product_id, comment, rating)
         return redirect('/social')
 #-----update review---
 def update_review_ADD(user_id, name, product_id, comment, rating):
@@ -554,12 +557,13 @@ def update_review_ADD(user_id, name, product_id, comment, rating):
 
 @app.route('/checkout', methods=['GET'])
 def checkout():
+    if not session.get('user_email'):
+        return redirect('/login')
     user_id = get_current_user_id()
     connection = sqlite3.connect('data.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM credit_card_info WHERE user_id = ?", (user_id,))
     cc_info = cursor.fetchall()
-    print("cc_info: ", cc_info)
 
     return render_template('checkout.html', cc_info=cc_info)
 
@@ -567,6 +571,8 @@ def checkout():
 #-------- ADD CART DATA TO ORDERS HISTORY ------------ 
 @app.route('/move_to_orders', methods=['POST'])
 def move_to_orders():
+    if not session.get('user_email'):
+        return redirect('/login')
     user_id = get_current_user_id()
     update_orders_ADD(user_id)
 
@@ -609,6 +615,8 @@ def move_to_orders():
 # WORKS FINE ------------------- VIEW USER DATA IN DATABASE ---------------------------------------
 @app.route('/view_users', methods=['GET']) 
 def view_users():
+    if not session.get('user_email'):
+        return redirect('/login')
     connection = sqlite3.connect('data.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM users")
@@ -636,18 +644,18 @@ def products():
 # WORKS FINE ------------------- ADD TO CART -------------------------------------------------
 @app.route('/move_to_cart', methods=['POST'])
 def move_to_cart():
+    if not session.get('user_email'):
+        return redirect('/login')
     if request.method == 'POST':
         user_id = get_current_user_id()
         product_id = request.form.get('product_id')
         review = request.form.get('review') # devolve o ID do produto que poderá receber a review
 
         if review:
-            print(f"Product ID para review: {review}")  # Add this line for debugging
             return redirect(f'/social?review={review}')
 
 
         if product_id:
-            # print(f"ID to CART: {product_id}")  # Add this line for debugging
             update_cart_ADD(user_id, product_id)
             # Check if the current page is the cart and redirect accordingly
             current_page = request.form.get('current_page')
@@ -663,19 +671,15 @@ def update_cart_ADD(user_id, product_id):
     cursor = connection.cursor()
     cursor.execute("SELECT stock FROM products WHERE products.id = ?", (product_id))
     existing_stock = cursor.fetchone()
-    # print ("Old stock:", existing_stock[0])
     if existing_stock[0] == 0:
         flash("OUT OF STOCK")
         return False
     cursor.execute("UPDATE products SET stock = ? WHERE products.id = ?", (existing_stock[0]-1,product_id))
-    # print ("New stock:", existing_stock[0]-1)
 
     try:
         cursor.execute("SELECT quantity FROM cart WHERE cart.user_id = ? AND cart.product_id = ?", (user_id,product_id))
         existing_quantity = cursor.fetchone()
-        print("Existing quantity:", existing_quantity[0])
         new_quantity = existing_quantity[0]+1
-        print("New quantity", new_quantity)
         cursor.execute("UPDATE cart SET quantity = ? WHERE cart.user_id = ? AND cart.product_id = ?", (new_quantity,user_id,product_id))
         connection.commit()
         return True 
@@ -690,6 +694,8 @@ def update_cart_ADD(user_id, product_id):
 # Define a function to fetch the user's cart data from the database.
 @app.route('/cart', methods=['POST', 'GET'])
 def cartANDwishlist():
+    if not session.get('user_email'):
+        return redirect('/login')
     # Get the current user's ID (you need to implement this).
     user_id = get_current_user_id()
 
@@ -762,6 +768,8 @@ def get_wishlist_data(user_id):
 # WORKS FINE ------------------- REMOVE FROM CART ---------------------------------------
 @app.route('/remove_from_cart', methods=['POST'])
 def remove_from_cart():
+    if not session.get('user_email'):
+        return redirect('/login')
     if request.method == 'POST':
         user_id = get_current_user_id()
         product_id = request.form.get('product_id')
@@ -776,9 +784,7 @@ def update_cart_REMOVE(user_id, product_id):
     cursor = connection.cursor()
     cursor.execute("SELECT stock FROM products WHERE products.id = ?", (product_id))
     existing_stock = cursor.fetchone()
-    print ("Old stock:", existing_stock[0])
     cursor.execute("UPDATE products SET stock = ? WHERE products.id = ?", (existing_stock[0]+1,product_id))
-    print("New stock:", existing_stock[0]+1)
 
     cursor.execute("SELECT quantity FROM cart WHERE cart.user_id = ? AND cart.product_id = ?", (user_id,product_id))
     existing_quantity = cursor.fetchone()
@@ -793,6 +799,8 @@ def update_cart_REMOVE(user_id, product_id):
 # WORKS FINE ------------------- ADD TO WISHLIST -----------------------------------------
 @app.route('/move_to_wishlist', methods=['POST'])
 def move_to_wishlist():
+    if not session.get('user_email'):
+        return redirect('/login')
     user_id = get_current_user_id()
     product_id = request.form.get('product_id')
 
@@ -807,7 +815,6 @@ def update_wishlist_ADD(user_id, product_id):
         cursor.execute("SELECT quantity FROM wishlist WHERE wishlist.user_id = ? AND wishlist.product_id = ?", (user_id,product_id))
         existing_quantity = cursor.fetchone() 
         new_quantity = existing_quantity[0]+1
-        print("New quantity", new_quantity)
         cursor.execute("UPDATE wishlist SET quantity = ? WHERE wishlist.user_id = ? AND wishlist.product_id = ?", (new_quantity,user_id,product_id))
         connection.commit()
         return True 
@@ -821,6 +828,8 @@ def update_wishlist_ADD(user_id, product_id):
 # WORKS FINE ------------------- REMOVE FROM WISHLIST ---------------------------------------
 @app.route('/remove_from_wishlist', methods=['POST'])
 def remove_from_wishlist():
+    if not session.get('user_email'):
+        return redirect('/login')
     if request.method == 'POST':
         user_id = get_current_user_id()
         product_id = request.form.get('product_id')
@@ -851,7 +860,6 @@ def update_orders_ADD(user_id):
     # Fetch cart id
     cursor.execute("SELECT * FROM cart WHERE cart.user_id = ?", (user_id,))
     cart = cursor.fetchall()
-    # print("cart BEFORE: ", cart)
    
     counter = 0
 
@@ -863,11 +871,6 @@ def update_orders_ADD(user_id):
         product_id = item[2]
         quantity = item[3]
         counter += 1
-        # print("ITEM: ", counter)
-        # print("cart user_id:", user_id)  
-        # print("cart product_id:", product_id)
-        # print("cart quantity:", quantity)
-
         #appends all items in cart and adds them to orders in one fell swoop
         cursor.execute("INSERT INTO orders (order_id,user_id, product_id, quantity) VALUES (?, ?, ?, ?)",
             (order_id, user_id, product_id, quantity))
@@ -877,13 +880,10 @@ def update_orders_ADD(user_id):
     connection.commit()
     cursor.execute("SELECT * FROM cart where user_id = ?", (user_id,))
     orders = cursor.fetchall()
-    # print("cart AFTER:", orders)
 
     cursor.execute("SELECT * FROM orders")
     orders = cursor.fetchall()
-    # print("orders AFTER: ", orders)
 
-    return  
 
 def get_new_order_id():
     # Get current time (in seconds) since the epoch
@@ -901,6 +901,8 @@ def get_new_order_id():
 
 @app.route('/orders', methods=['GET'])
 def orders():
+    if not session.get('user_email'):
+        return redirect('/login')
     user_id = get_current_user_id()
     # Fetch the user's orders data with associated items.
     orders_data = get_orders_data(user_id)
@@ -921,31 +923,29 @@ def get_orders_data(user_id):
     
     if not orders_data:
         return None
-    # print ("orders_data: ", orders_data)
 
     products = {}  # Dictionary to store order_id as keys
 
         
     for orders_item in orders_data:
         order_id = orders_item[0]
-        # print ("order_id: ", order_id)
 
         # If order_id is not already in products, initialize it
         if order_id not in products:
             products[order_id] = {"total_price": 0, "products": [], "order_date": orders_item[2]}
 
-        # print ("order items IN FOR: ",orders_item)
         price = orders_item[1] * orders_item[-1]
         products[order_id]["products"].append({"id" : orders_item[3] ,"name" : orders_item[4], "quantity": orders_item[1], "price": price})
         products[order_id]["total_price"] += price
     
-    # print ("products: ", products)
     return products
 
 
 # WORKS FINE  ------------- REORDER ---------------------------------
 @app.route('/reorder', methods=['POST'])
 def reorder():
+    if not session.get('user_email'):
+        return redirect('/login')
     order_id = request.form.get('order_id')
     user_id = get_current_user_id()
     
@@ -953,10 +953,7 @@ def reorder():
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM orders WHERE order_id = ?", (order_id,))
     previous_orders = cursor.fetchall()
-    print ("previous_orders: ", previous_orders)
     for item in previous_orders:
-        print ("item_id: ", item[3])
-        print ("item_quantity: ", item[4])
         update_cart_REORDER(user_id, item[3], item[4])
 
     return redirect('/cart')
@@ -968,7 +965,6 @@ def update_cart_REORDER(user_id, product_id, quantity):
     existing_quantity = cursor.fetchone()
     if existing_quantity:
         new_quantity = existing_quantity[0] + quantity
-        print("New quantity", new_quantity)
         cursor.execute("UPDATE cart SET quantity = ? WHERE cart.user_id = ? AND cart.product_id = ?", (new_quantity,user_id,product_id))
         connection.commit()
         return True 
@@ -979,7 +975,7 @@ def update_cart_REORDER(user_id, product_id, quantity):
         return False
 
 if __name__ == "__main__":
-    app.run(debug=True,port=2000) 
+    app.run(debug=False,port=2000) 
 
 
 
