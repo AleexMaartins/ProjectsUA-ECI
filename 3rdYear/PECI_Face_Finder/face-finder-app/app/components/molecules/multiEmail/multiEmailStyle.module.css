@@ -1,0 +1,12 @@
+.test{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding: 0.5rem 1rem;
+
+}
+
+.removeIcon{
+    cursor: pointer;
+}

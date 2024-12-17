@@ -1,0 +1,48 @@
+.pageContainer {
+  display: grid;
+  flex-grow: 1;
+  animation: slideIn 0.5s ease forwards;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.contentContainer {
+  width: 60%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 30px;
+  justify-self: center;
+  max-width: 100%;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%; /* Fill the available width */
+  max-width: 400px; /* Limit the width */
+}
+
+.link {
+  color: var(--black);
+}
+
+/* Define the slide-in animation */
+@keyframes slideIn {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}

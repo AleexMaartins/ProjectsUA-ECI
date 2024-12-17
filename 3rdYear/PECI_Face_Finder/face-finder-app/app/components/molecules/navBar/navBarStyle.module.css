@@ -1,0 +1,44 @@
+.navContainer{
+    height: 70px;
+    width: 100vw;
+    border:0.5px solid var(--ligth-gray);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    background-color: white;
+    color: #be3434;
+}
+.hasLinks{
+    justify-content: space-between;
+}
+.noLinks{
+    width: 100%;
+    justify-content: center;
+}   
+
+.logo{
+    cursor: pointer;
+}
+
+.authLinks{
+    display: flex;
+    column-gap: 15px;
+}
+
+.logout{
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--main);
+    cursor: pointer;
+}
+
+.logout:hover{
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--main-blue);
+}
+
+.auxBar{
+    height: 20px;
+    width: 100vw;
+    background-color: #08263b;
+}

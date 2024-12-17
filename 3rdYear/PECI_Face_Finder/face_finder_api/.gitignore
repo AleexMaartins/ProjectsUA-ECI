@@ -1,0 +1,7 @@
+*.pyc
+/photo_processing_folder
+/services/__pycache__
+/models/__pycache__
+/routers/__pycache__
+/const/__pycache__
+.env

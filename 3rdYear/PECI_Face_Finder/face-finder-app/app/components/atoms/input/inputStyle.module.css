@@ -1,0 +1,30 @@
+.baseInput{
+    font-size: 17px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    border: 0;
+    width: 100%;
+    color: var(--black);
+    margin: 0;
+}
+.baseInput:focus {
+    outline: none !important;
+}
+.inputContainer{
+    display: flex;
+    align-items: center;
+
+    border: 1px solid var(--ligth-gray);
+    border-radius: 6px;
+
+    padding-right: 8px;
+}
+.inputContainer:has(input:focus){
+    border:1px solid #08263b;
+}
+
+
+/* width */
+.fullWidth{
+    width: 100%;
+}

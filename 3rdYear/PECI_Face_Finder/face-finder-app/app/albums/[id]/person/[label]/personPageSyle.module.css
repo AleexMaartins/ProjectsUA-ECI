@@ -1,0 +1,31 @@
+.thumb{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.header{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.personLabelDiv{
+    cursor: pointer;
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+.actionButtons{
+    display: flex;
+    flex-direction: column;
+}
+
+.cancelButton{
+    margin-top: 10px;
+}
+
+.photo{
+    object-fit: contain;
+    max-width: 100%;
+}

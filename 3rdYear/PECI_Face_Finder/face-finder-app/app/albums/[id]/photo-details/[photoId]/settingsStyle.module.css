@@ -1,0 +1,68 @@
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.titleContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.headerButtons{
+    display: flex;
+    column-gap: 10px;
+}
+
+.buttonIcon{
+    width: 1rem;
+    height: 1rem;
+}
+
+.peopleSection{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.showAllCaption{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.personCards{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    column-gap: 8px;
+}
+.dropZone{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
+
+.photo{
+    object-fit: contain;
+    max-width: 60%;
+}
+
+.photoAndButtons {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+}
+
+.block1Buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.thumb{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

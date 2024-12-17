@@ -1,0 +1,4 @@
+.peopleListDiv{
+    display: flex;
+    flex-wrap: wrap;
+}

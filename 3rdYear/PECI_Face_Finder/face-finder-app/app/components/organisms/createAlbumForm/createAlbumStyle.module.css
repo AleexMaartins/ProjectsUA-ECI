@@ -1,0 +1,28 @@
+.createForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+.checkboxContainer{
+    display: flex;
+    column-gap: 5px;
+}
+.checkbox{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+.checkbox:checked{
+    accent-color: var(--main-blue)
+
+}
+
+.formFooter{
+    display: flex;
+    margin-top: 30px;
+    column-gap: 2rem;
+    justify-content: flex-end;
+}
+
+

@@ -1,0 +1,40 @@
+.cardContainer{
+    height: 300px;
+    width: 250px;
+    border-radius: 16px;
+    background-color: rgb(252, 252, 252);
+    border: 1px solid whitesmoke;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+
+}
+
+.cardContainer:hover{
+    background-color: whitesmoke;
+}
+
+.albumThumb{
+   width: 200px;
+   height: 200px;
+   border-radius: 8px;
+   background-color: white;
+}
+
+.albumDescription{
+   align-self: flex-start;
+   display: flex;
+   flex-direction: column;
+   margin-top: 10px;
+
+}
+
+
+
+
+
+
+
+

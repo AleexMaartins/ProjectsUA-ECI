@@ -1,0 +1,28 @@
+.header{
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.subHeader{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+
+.caption{
+    font-size: 14px;
+}
+.linkStyle{
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--main);
+}
+
+.linkStyle:hover{
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--main-blue);
+}
+
+.text{
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,14 @@
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.titleContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.headerButtons{
+    display: flex;
+    column-gap: 10px;
+}

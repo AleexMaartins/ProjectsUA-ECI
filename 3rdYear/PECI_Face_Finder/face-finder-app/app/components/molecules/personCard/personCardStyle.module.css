@@ -1,0 +1,22 @@
+.card{
+    width: 200px;
+    max-height: 260px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 20px;
+}
+.card:hover{
+    background-color: whitesmoke;
+}
+.personThumb{
+    height: 140px;
+    width: 140px;
+    border-radius: 70px;
+}
+.personName{
+    display: flex;
+}

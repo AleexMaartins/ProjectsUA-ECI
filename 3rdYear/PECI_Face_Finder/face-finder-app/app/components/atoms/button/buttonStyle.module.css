@@ -1,0 +1,60 @@
+
+.btnBase{
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+/* Sizes */
+.btnSmall{
+    height: 40px;
+    width: 50px;
+}
+.btnMedium{
+    width: 100px;
+    height: 40px;
+}
+.btnBig{
+    width: 200px;
+    height: 40px;
+}
+.btnFull{
+    width: 100%;
+    height: 40px;
+}
+
+/* variants */
+.btnContained{
+    border:0;
+    background-color: #08263b;
+    color: white;
+}
+.btnOutlined{
+    border:1.5px solid #08263b;
+    background-color: white;
+    color: #08263b;
+}
+.btnOutlined:hover{
+    border:1.5px solid #08263b;
+    background-color: #08263b;
+    color: white;
+}
+.btnSave{
+    border:0;
+    background-color: #3E693B;
+    color: white;
+}
+.btnSave:hover{
+    border:0;
+    background-color: #6CA468;
+    color: white;
+}
+
+/* Hover */
+.btnContained:hover{
+    background-color: #4c6c84
+}
+

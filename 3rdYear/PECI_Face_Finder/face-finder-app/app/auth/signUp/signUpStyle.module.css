@@ -1,0 +1,21 @@
+
+.passIcon{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.createAccountDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.headersContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}

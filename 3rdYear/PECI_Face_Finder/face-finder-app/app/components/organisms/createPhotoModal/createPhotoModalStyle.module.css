@@ -1,0 +1,34 @@
+.photoModalContainer{
+    height: 50vh;
+    width: 100%;
+}
+.list{
+    width: 100%;
+    height: 40vh;
+    overflow-y: auto;
+}
+.dropZone{
+    height: 80%;
+}
+.fileList{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 9px;
+}
+.listedFile{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--ligth-gray);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerButtons{
+    display: flex;
+    margin-top: 30px;
+    column-gap: 2rem;
+    justify-content: flex-end;
+}

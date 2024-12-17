@@ -1,0 +1,11 @@
+.passIcon{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.createAccountDiv{
+    display: flex;
+    gap: 5px;
+}
+

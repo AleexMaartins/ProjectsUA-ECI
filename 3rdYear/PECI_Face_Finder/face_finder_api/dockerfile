@@ -1,0 +1,22 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim-buster
+
+# Set the working directory in the container to /app
+RUN mkdir /app
+WORKDIR /app
+COPY . /app
+
+# Add the worker script and requirements.txt from the worker directory
+COPY worker.py .
+COPY requirements.txt .
+
+
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+RUN pip install tensorflow[and-cuda]
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Run worker.py when the container launches
+CMD ["python", "worker.py"]
