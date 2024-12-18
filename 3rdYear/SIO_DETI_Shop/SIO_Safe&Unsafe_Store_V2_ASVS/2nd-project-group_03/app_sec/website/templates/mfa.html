@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Enter TFA Code</h1> 
+        <div style="border: 2px solid black; padding: 20px; width: 200px;">
+            <form action="/mfaTOTP" method="POST">
+                <label for="tfa">Enter TFA Code:</label><br>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="text" id="tfa" name="tfa"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>

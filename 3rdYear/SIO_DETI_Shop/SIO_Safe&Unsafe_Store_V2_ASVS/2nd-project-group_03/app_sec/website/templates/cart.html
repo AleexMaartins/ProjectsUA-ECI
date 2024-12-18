@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+    <title>DetiShop - Cart</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+
+
+                    <li class="nav__item"><a id="logout" href="/login" class="nav__link">Logout</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+
+
+        <div class="cart-table-container">
+            <!-- CART -->
+            
+            <table class="cart_table" style="margin-top: 50px;" id="cart-table">
+                
+                <caption style="font-weight: bold;">Cart</caption>
+                <thead>
+                    <tr>
+                        <th class="center-text" colspan="4" id="cart-div">Cart</th>
+                    </tr>
+                    <tr>
+                        <th class="center-text" id="cart-div">Product Name</th>
+                        <th class="center-text" id="cart-div">Price</th>
+                        <th class="center-text" id="cart-div">Quantity</th>
+                        <!-- <th class="center-text">ID(test)</th> -->
+                        <th class="center-text" id="cart-div">Action</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {% if cart_data.products %}
+                    {% for item in cart_data.products %}
+                    <tr>
+                        <td id="cart-div">{{ item.name }}</td>
+                        <td id="cart-div">{{ item.price }} €</td>
+                        <td id="cart-div">{{ item.quantity }}</td>
+                        <!-- <td>{{ item.id }}</td> -->
+                        <td class="button-container" id="cart-div">
+                            <form method="POST" action="/move_to_cart">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <input type="hidden" name="current_page" value="cart">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class= "button add" type="submit">One More Unit</button>
+                            </form>
+                        </td>
+                        <td class="button-container" id="cart-div">
+                            <form method="POST" action="/move_to_wishlist">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class= "button add" type="submit">Add To Wishlist</button>
+                            </form>
+                        </td>
+                        <td class="button-container" id="cart-div">
+                            <form method="POST" action="/remove_from_cart">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class= "button remove" type="submit">Remove From Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="center-text" id="cart-div">No items in cart</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <p>Total Price: $<span id="total_price">{{ cart_data.total_price }}</span></p>
+
+            <!-- WISHLIST -->
+            <table class="cart_table" style="margin-top: 50px;" id="cart-table">
+                <thead>
+                    <tr>
+                        <th class="center-text" colspan="4" id="cart-div">Wishlist</th>
+                    </tr>
+                    <tr>
+                        <th class="center-text" id="cart-div">Product Name</th>
+                        <th class="center-text" id="cart-div">Price</th>
+                        <th class="center-text" id="cart-div">Quantity</th>
+                        <!-- <th class="center-text">ID(test)</th> -->
+                        <th class="center-text" id="cart-div">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if wishlist_data.products %}
+                    {% for item in wishlist_data.products %}
+                    <tr>
+                        <td id="cart-div">{{ item.name }}</td>
+                        <td id="cart-div">{{ item.price }} €</td>
+                        <td id="cart-div">{{ item.quantity }}</td>
+                        <!-- <td>{{ item.id }}</td> -->
+                        <td class="button-container" id="cart-div">
+                            <form method="POST" action="/move_to_cart">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <input type="hidden" name="current_page" value="cart">
+                                <button class= "button add" type="submit">Add To Cart</button>
+                            </form>
+                        </td>
+                        <td class="button-container" id="cart-div">
+                            <form method="POST" action="/remove_from_wishlist">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="product_id" value="{{ item.id }}">
+                                <button class= "button remove" type="submit">Remove From Wishlist</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="center-text" id="cart-div"   >No items in wishlist</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <p>Total Price: $<span id="total_price">{{ wishlist_data.total_price }}</span></p>
+
+
+
+            <a href="/" class="button">Continue Shopping</a>
+            <a href="/checkout" class="button">Checkout</a>
+            <a href="/orders" class="button">Orders</a>
+        </div>
+    </main>
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">Deti Shop</a>
+                <span class="footer__description">Health Clinic</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Psychotherapy </a></li>
+                    <li><a href="#" class="footer__link">Physical therapy</a></li>
+                    <li><a href="#" class="footer__link">Speech therapy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<script src="../static/js/main.js"></script>
+{% extends "base_login_signup.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('sign_up') }}">
+
+  <h3 align="center">Sign Up</h3>
+  {{ form.csrf_token }}
+
+  <div class="form-group">
+    {{ form.email.label }}
+    {{ form.email(class="form-control", placeholder="Enter email") }}
+    {% for error in form.email.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+  </div>
+
+  <div class="form-group">
+    {{ form.name.label }}
+    {{ form.name(class="form-control", placeholder="Enter first name") }}
+    {% for error in form.name.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+  </div>
+
+  <div class="form-group position-relative"> 
+    {{ form.password.label }}
+    <div style="display: flex;">
+      {{ form.password(id="password", class="form-control", placeholder="Enter password", onkeyup="isGood(this.value); adjustIconPosition()", style="flex-grow: 1;") }}
+      <img id="showPassIcon1" src="../static/img/showPassIcon.png" onclick="togglePasswordVisibility('password', 'showPassIcon1')" style="cursor: pointer; position: absolute; right: 10px; top: 72%; transform: translateY(-50%); width: 20px; height: 20px;">
+    </div>
+    <small class="help-block" id="password-text"></small>
+    {% for error in form.password.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+  </div>
+
+<div class="form-group">
+    {{ form.password2.label }}
+    {{ form.password2(id="password2", class="form-control", placeholder="Confirm password") }}
+    <img id="showPassIcon2" src="../static/img/showPassIcon.png" onclick="togglePasswordVisibility('password2', 'showPassIcon2')" style="cursor: pointer; position: relative; bottom: 18px; left: 330px; transform: translateY(-50%); width: 20px; height: 20px;">
+    {% for error in form.password2.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+</div>
+
+  <br />
+
+  <div style="text-align: center;">
+    <button type="submit" class="btn btn-primary"
+      style="background-color: rgb(106, 166, 206); color: white; border: none; padding: 10px 20px;">Submit</button>
+    <a href="{{ url_for('google_signup') }}" class="btn btn-primary"
+      style="background-color: rgb(66, 133, 244); color: white; border: none; padding: 10px 20px; margin-left: 10px;">Sign Up with Google</a>
+  </div>
+</form>
+{% endblock %}

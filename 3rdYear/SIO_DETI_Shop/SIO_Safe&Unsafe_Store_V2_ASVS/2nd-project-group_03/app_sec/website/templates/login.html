@@ -1,0 +1,43 @@
+<script src="../static/js/main.js"></script>
+{% extends "base_login_signup.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-content">
+  <form method="POST" action="{{ url_for('login') }}">
+   
+   <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}"/>  <!-- CSRF Token -->
+   
+    <img class="login-img" src="{{ url_for('static', filename='img/avatar.svg') }}">
+    <h3 align="center">Login</h3>
+    <div class="input-div">
+      <label for="email"></label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+      />
+    </div>
+    <div class="input-div">
+      <label for="password"></label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter password"
+      />
+      <img id="showPassIcon" src="../static/img/showPassIcon.png" onclick="togglePasswordVisibility('password', 'showPassIcon')" style="cursor: pointer; position: relative; bottom: 19px; left: 333px; transform: translateY(-50%); width: 20px; height: 20px;">
+    </div>
+    <br />
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-primary"
+        style="background-color: rgb(106, 166, 206); color: white; border: none; padding: 10px 20px;">Login</button>
+      <a href="{{ url_for('google_login') }}" class="btn btn-danger">Login with Google</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

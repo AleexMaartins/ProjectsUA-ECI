@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+    <!--========== BOX ICONS ==========-->
+    <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+
+    <title>DetiShop - Profile</title>
+</head>
+
+<body>
+
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+
+            <a href="/" class="nav__logo">
+                <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+                DetiShop
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                    {% if session['user_name'] == "admin" %}
+                    <li class="nav__item"><a href="/usermanager" class="nav__link">Users Manager</a></li>
+                    {% endif %}
+                    <li class="nav__item"><a href="/cart" class="nav__link">Cart</a></li>
+                    <li class="nav__item"><a id="logout" href="/login" class="nav__link">Logout</a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <h4>{{user}}</h4>
+
+
+
+    </main>
+
+    <section class="contact section bd-container">
+        <div class="contact__container bd-grid">
+            <div class="contact__data">
+                <span class="section-subtitle contact__initial">Profile</span>
+                <h2 class="section-title contact__initial">Information</h2>
+                <p class="contact__description">User name: {{ session['user_name'] }}</p>
+                <p class="contact__description">Email: {{ session['user_email'] }}</p>
+                <!--  CONFIMRAR SE FAZ SENTIDO MOSTRAR A PASSWORD      
+                <p class="contact__description"> Password: {{ session['user_password'] }}</p> 
+                -->
+
+            </div>
+
+            <div class="contact__button">
+                <button id="edit-button" class="button">Edit</button>
+            </div>
+
+            {% if not is_google_account %}
+            <form id="password-change-form" method="POST" action="{{ url_for('change_password') }}">
+                <script src="../static/js/main.js"></script>
+
+                <div class="checkout-row">
+                    <div class="checkout-col-50">
+                        {{ form.csrf_token }}
+                        <h3>Change Password</h3>
+                        {{ form.hidden_tag() }}
+
+                        <label class="" for="old_password"> {{ form.old_password.label }}</label>
+                        {{ form.old_password(id="old_password", class="input-field", placeholder="Old password",
+                        required=true) }}
+                        <img id="showPassIcon1" src="../static/img/showPassIcon.png"
+                            onclick="togglePasswordVisibility('old_password', 'showPassIcon1')"
+                            style="cursor: pointer; position: relative; left: 550px; bottom: 50px; transform: translateY(-50%); width: 20px; height: 20px;">
+                        {% if form.errors.old_password %}
+                        <p class="error">{{ form.errors.old_password[0] }}</p>
+                        {% endif %}
+
+                        <label for="new_password"> {{ form.new_password.label }}</label>
+                        {{ form.new_password(id="new_password",class="input-field", placeholder="New password",
+                        onkeyup="isGood(this.value)") }}
+                        <img id="showPassIcon2" src="../static/img/showPassIcon.png"
+                            onclick="togglePasswordVisibility('new_password', 'showPassIcon2')"
+                            style="cursor: pointer; position: relative; left: 550px; bottom: 50px; transform: translateY(-50%); width: 20px; height: 20px;">
+                        <small class="help-block" id="password-text"></small>
+                        {% if form.errors.new_password %}
+                        <p class="error">{{ form.errors.new_password[0] }}</p>
+                        {% endif %}
+
+                        <div class="checkout-row">
+                            <div class="checkout-col-50">
+                                <label for="confirm_password"> Confirm Password</label>
+                                {{ form.confirm_password(id="confirm_password",class="input-field", placeholder="Confirm password", required=true) }}
+                            </div>
+                        </div>
+                        <img id="showPassIcon3" src="../static/img/showPassIcon.png"
+                            onclick="togglePasswordVisibility('confirm_password', 'showPassIcon3')"
+                            style="cursor: pointer; position: relative; left: 550px; bottom: 50px; transform: translateY(-50%); width: 20px; height: 20px;">
+                        {% if form.errors.confirm_password %}
+                        <p class="error">{{ form.errors.confirm_password[0] }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Change password</button>
+                </div>
+            </form>
+            {% else %}
+            <div id="google-account-message" class="hidden">Google accounts cannot change password.</div>
+            {% endif %}
+
+            <div class="flash-messages-container">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+        </div>
+    </section>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">eHealth Corp</a>
+                <span class="footer__description">Health Clinic</span>
+                <div>
+                    <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p class="footer__copy"> </p>
+    </footer>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https:/unpkg.com/scrollreveal"></script>
+
+    <!--========== MAIN JS ==========-->
+    <script src="../static/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Obtém uma referência para o botão "Edit" e o formulário de mudança de senha
+            const editButton = document.getElementById("edit-button");
+            const passwordChangeForm = document.getElementById("password-change-form");
+
+            // Oculta o formulário inicialmente
+            passwordChangeForm.style.display = "none";
+
+            // Adiciona um evento de clique ao botão "Edit"
+            editButton.addEventListener("click", function (event) {
+                // Impede o comportamento padrão do botão (evita o envio do formulário)
+                event.preventDefault();
+
+                // Alterna a visibilidade do formulário de mudança de senha
+                if (passwordChangeForm.style.display === "none" || passwordChangeForm.style.display === "") {
+                    passwordChangeForm.style.display = "block"; // Mostra o formulário
+                } else {
+                    passwordChangeForm.style.display = "none"; // Oculta o formulário
+                }
+            });
+        });
+        document.getElementById("edit-button").addEventListener("click", function () {
+            var message = document.getElementById("google-account-message");
+            if (message) {
+                message.classList.remove("hidden");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

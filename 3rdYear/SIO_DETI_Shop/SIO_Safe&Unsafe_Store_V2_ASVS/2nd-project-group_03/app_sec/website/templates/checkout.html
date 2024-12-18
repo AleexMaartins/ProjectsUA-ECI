@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="../static/img/png.png" type="image/png">
+  <!--========== BOX ICONS ==========-->
+  <link href='https:/cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--========== CSS ==========-->
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>DetiShop - Checkout</title>
+</head>
+
+<body>
+
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+    <i class='bx bx-chevron-up scrolltop__icon'></i>
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+
+      <a href="/" class="nav__logo">
+        <img src="../static/img/ualogo.png" alt="Rod Asclepius Logo" class="logo-image">
+        DetiShop
+      </a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"> <a href="/cart" class="nav__link"><i class="fas fa-shopping-cart"></i>Cart</a></li>
+          <li class="nav__item"> <a href="/orders" class="nav__link"> Orders</a></li>
+
+          <li class="nav__item"><a id="logout" href="/login" class="nav__link">Logout</a></li>
+          <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="l-main">
+    <!--========== CHECKOUT SECTION ==========-->
+    <input type="hidden" id="order-id" value="{{ order_id }}">
+    {% if cc_info %}
+    <input type="hidden" id="formatted_ccnum" value="{{ cc_info[0][3] }}">
+    {% else %}
+    <input type="hidden" id="formatted_ccnum" value="">
+    {% endif %}
+    <section class="checkout section bd-container" id="checkout">
+      <div class="cart-table-container">
+        <div class="checkout__data">
+          <h2 class="section-title checkout__initial">Checkout</h2>
+          <table class="cart_table" style="margin-top: 50px;">
+            <div class="checkout-row">
+              <div class="checkout-col-75">
+                <div class="checkout-container" id="checkout_container">
+                  <div class="checkout-row">
+                    <div class="checkout-col-50">
+                      <h3>Billing Address</h3>
+                      <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                      <input type="text" id="fname" name="firstname" placeholder="John M. Doe"
+                        oninput="requiredFields()">
+                      <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                      <input type="text" id="email" name="email" placeholder="john@example.com"
+                        oninput="requiredFields()">
+                      <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                      <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                      <label for="city"><i class="fa fa-institution"></i> City</label>
+                      <input type="text" id="city" name="city" placeholder="New York">
+
+                      <div class="checkout-row">
+                        <div class="checkout-col-50">
+                          <label for="country">Country</label>
+                          <input type="text" id="state" name="state" placeholder="NY">
+                        </div>
+                        <div class="checkout-col-50">
+                          <label for="zip">Zip</label>
+                          <input type="text" id="zip" name="zip" placeholder="10001">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="checkout-col-50">
+                      <h3>Payment</h3>
+                      <label for="fname">Accepted Cards</label>
+                      <div class="icon-container">
+                        <img src="../static/img/visa.jpg" alt="visa" style="width:auto;height:30px;">
+                        <img src="../static/img/mastercard.jpg" alt="mastercard" style="width:auto;height:30px;">
+                        <img src="../static/img/multibanco.png" alt="multibanco" style="width:auto;height:30px;">
+                        <img src="../static/img/paypal.jpg" alt="paypal" style="width:auto;height:30px;">
+
+
+                      </div>
+                      <label for="cname">Name on Card</label>
+                      <form method="POST" action="/move_to_orders">
+                        <!-- if it has cc_info display if not dont-->
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        {% if cc_info %}
+                        <input type="text" id="cname" name="name" placeholder="John More Doe"
+                          value="{{ cc_info[0][2] }}"> {% else %}
+                        <input type="text" id="cname" name="name" placeholder="John More Doe">
+                        {% endif %}
+                        <label for="credit-card-input">Credit card number</label>
+                        {% if cc_info %}
+                        <input type="text" id="ccnum" name="cc_number" placeholder="1234-5678-9012-1234"
+                          oninput="formatCreditCard()" value="{{ cc_info[0][3] }}">
+                        {% else %}
+                        <input type="text" id="ccnum" name="cc_number" placeholder="1234-5678-9012-1234"
+                          oninput="formatCreditCard()">
+                        {% endif %}
+                        {% if cc_info %}
+                        <label for="expmonth">Exp Month</label>
+                        <select id="expmonth" name="exp_month">
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                        {% else %}
+                        <label for="expmonth">Exp Month</label>
+                        <select id="expmonth" name="exp_month">
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                        {% endif %}
+                        <div class="checkout-row">
+                          <div class="checkout-col-50">
+                            <label for="expyear">Exp Year</label>
+                            {%if cc_info %}
+                            <input type="text" id="expyear" name="exp_year" value="{{ cc_info[0][5] }}">
+
+                            {% else %}
+                            <input type="text" id="expyear" name="exp_year">
+
+                            {% endif %}
+                          </div>
+                          <div class="checkout-col-50">
+                            <label for="cvv">CVV</label>
+                            {% if cc_info %}
+                            <input type="text" id="cvv" name="cvv" value="{{ cc_info[0][6] }}">
+                            {% else %}
+                            <input type="text" id="cvv" name="cvv">
+
+                            {% endif %}
+                          </div>
+                        </div>
+                    </div>
+
+                  </div>
+                  <label>
+                    <input type="checkbox" checked="checked" name="sameadr"> Save credit card information
+                  </label>
+                  <input type="submit" id="checkout-btn" onclick="toggleCheckout()" value="Continue to checkout"
+                    class="btn">
+                  <span id="invalid-cc-popup" class="popuptext">Invalid Credit Card information</span>
+                  <span id="required-info-popup" class="popuptext">Required information not filled</span>
+                  <!-- Add a section to display the flash message if it exists -->
+
+                  <div class="flash-messages-container">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class="flash-messages">
+                      {% for message in messages %}
+                      <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!--========== RECEIPT ==========-->
+    <div class="popup-container" id="popup-container">
+      <div class="popup-content">
+        <button class="button close-button">&times;</button>
+        </form>
+        <div id="receipt-content" id="receipt-code">
+          <h3>Order Successfull</h3>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--========== FOOTER ==========-->
+  <footer class="footer section bd-container">
+    <div class="footer__container bd-grid">
+      <div class="footer__content">
+        <a href="#" class="footer__logo">Deti Shop</a>
+        <span class="footer__description">Health Clinic</span>
+        <div>
+          <a class="footer__social"><i class='bx bxl-facebook'></i></a>
+          <a class="footer__social"><i class='bx bxl-instagram'></i></a>
+          <a class="footer__social"><i class='bx bxl-twitter'></i></a>
+        </div>
+      </div>
+
+      <div class="footer__content">
+        <h3 class="footer__title">Services</h3>
+        <ul>
+          <li><a href="#" class="footer__link">Psychotherapy </a></li>
+          <li><a href="#" class="footer__link">Physical therapy</a></li>
+          <li><a href="#" class="footer__link">Speech therapy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__content">
+        <h3 class="footer__title">Information</h3>
+        <ul>
+          <li><a href="#" class="footer__link">Contact us</a></li>
+          <li><a href="#" class="footer__link">Privacy policy</a></li>
+          <li><a href="#" class="footer__link">Terms of services</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <p class="footer__copy"> </p>
+  </footer>
+
+  <!--========== SCROLL REVEAL ==========-->
+  <script src="https:/unpkg.com/scrollreveal"></script>
+
+  <!--========== MAIN JS ==========-->
+  <script src="../static/js/main.js"></script>
+
+  <script>
+    // Call the formatCreditCardFromDatabase function directly
+    formatCreditCardFromDatabase();
+  </script>
+</body>
+
+</html>
